@@ -197,7 +197,7 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
     </style>
 <!-- EmailJS: client-side email for the test-ride forms -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>window.emailjs && emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });</script>
+<script>window.emailjs && emailjs.init({ publicKey: "aZx0Zi9K5AAcRkQsH" });</script>
 </head>
 <body class="wp-singular page-template page-template-page-test-ride page-template-page-test-ride-php page page-id-10 wp-embed-responsive wp-theme-generatepress wp-child-theme-bajaj-morocoo right-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover">
     
@@ -654,7 +654,7 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
 f.addEventListener('submit',function(e){e.preventDefault();
 var out=f.querySelector('.wpcf7-response-output'),btn=f.querySelector('.wpcf7-submit');if(btn)btn.disabled=true;
-emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",f)
+emailjs.sendForm("service_8i4jue1","template_rpnvap9",f)
 .then(function(){f.reset();
 if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#0a7d2c;margin-top:12px;';out.textContent='Merci ! Votre demande a bien \u00e9t\u00e9 envoy\u00e9e.';}})
 .catch(function(){if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#c00;margin-top:12px;';out.textContent="Une erreur s'est produite. R\u00e9essayez ou contactez-nous sur WhatsApp.";}})
@@ -1355,7 +1355,7 @@ body.bjmenq-lock { overflow: hidden; }
             whatsapp: (waToggle && waToggle.checked) ? 'Oui' : 'Non'
         };
 
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+        emailjs.send("service_8i4jue1", "template_rpnvap9", params)
             .then(function(res){
                 if (res && res.status === 200) {
                     /* Success -> show thank-you, then reset + close after a few seconds */

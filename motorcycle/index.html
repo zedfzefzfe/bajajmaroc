@@ -215,7 +215,7 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
     </style>
 <!-- EmailJS: client-side email for the test-ride forms -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>window.emailjs && emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });</script>
+<script>window.emailjs && emailjs.init({ publicKey: "aZx0Zi9K5AAcRkQsH" });</script>
 </head>
 <body class="archive post-type-archive post-type-archive-motorcycle wp-embed-responsive wp-theme-generatepress wp-child-theme-bajaj-morocoo right-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover">
     
@@ -1109,7 +1109,7 @@ body.bjmenq-lock { overflow: hidden; }
             whatsapp: (waToggle && waToggle.checked) ? 'Oui' : 'Non'
         };
 
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+        emailjs.send("service_8i4jue1", "template_rpnvap9", params)
             .then(function(res){
                 if (res && res.status === 200) {
                     /* Success -> show thank-you, then reset + close after a few seconds */
