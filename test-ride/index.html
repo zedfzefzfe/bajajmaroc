@@ -1178,13 +1178,13 @@ html, body { overflow-x: hidden !important; max-width: 100% !important; }
 .bjmenq-bikerow { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 20px; }
 .bjmenq-bikethumb { width: 128px; height: 92px; object-fit: contain; flex:0 0 auto; }
 .bjmenq-bikename { font-weight: 600; font-size: 15px; }
-.bjmenq-change { margin-left: auto; background:none;border:none; color:#4ea3ee; font-size:13px; font-weight:600; cursor:pointer; text-decoration: none; font-family:inherit; transition: color .2s; }
-.bjmenq-change:hover { color:#8fc6f5; text-decoration: underline; }
-.bjmenq-changelist { display:none; margin: -6px 0 20px; background:#1a1a1f; border:1px solid #2a2a30; border-radius:10px; overflow:hidden; }
-.bjmenq-changelist.bjmenq-show { display:block; }
-.bjmenq-changeitem { display:flex; align-items:center; gap:10px; padding:10px 12px; cursor:pointer; border:none; background:none; width:100%; color:#fff; text-align:left; font-size:14px; font-family:inherit; }
-.bjmenq-changeitem:hover { background:#24242c; }
-.bjmenq-changeitem img { width:44px; height:32px; object-fit:contain; flex:0 0 auto; }
+.bjmenq-change { margin-left: auto; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:#cfe4fb; font-size:12px; font-weight:700; cursor:pointer; text-decoration: none; font-family:inherit; padding:7px 14px; border-radius:20px; transition: all .2s; white-space:nowrap; }
+.bjmenq-change:hover { background:#015cac; border-color:#015cac; color:#fff; text-decoration: none; }
+.bjmenq-changelist { display:none; margin: 6px 0 22px; background:#15151a; border:1px solid #2e2e37; border-radius:14px; overflow:hidden; box-shadow:0 14px 34px rgba(0,0,0,.4); }
+.bjmenq-changelist.bjmenq-show { display:block; animation: bjmenq-fade .22s ease; }
+.bjmenq-changeitem { display:flex; align-items:center; gap:16px; padding:14px 16px; cursor:pointer; border:none; border-left:3px solid transparent; background:none; width:100%; color:#fff; text-align:left; font-size:16px; font-weight:600; font-family:inherit; transition: background .2s, border-color .2s, padding-left .2s; }
+.bjmenq-changeitem:hover { background:#1f2833; border-left-color:#015cac; padding-left:22px; } .bjmenq-changeitem + .bjmenq-changeitem { border-top:1px solid rgba(255,255,255,.06); } @keyframes bjmenq-fade { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+.bjmenq-changeitem img { width:88px; height:60px; object-fit:contain; flex:0 0 auto; background:#0e0e12; border-radius:8px; padding:6px; }
 .bjmenq-field { margin-bottom: 16px !important; }
 .bjmenq-input, .bjmenq-select { width:100% !important; background:#1a1a1f !important; border:1px solid #2a2a30 !important; border-radius:8px !important; color:#fff !important; padding:13px 14px !important; font-size:14px !important; font-family:inherit !important; transition: border-color .2s, box-shadow .2s !important; box-sizing:border-box !important; height:auto !important; margin:0 !important; }
 .bjmenq-input:focus, .bjmenq-select:focus { outline:none !important; border-color:#015cac !important; box-shadow:0 0 0 3px rgba(1,92,172,.2) !important; background:#1a1a1f !important; }
