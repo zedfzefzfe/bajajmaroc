@@ -14,46 +14,58 @@ to any static host (Vercel, Netlify, GitHub Pages, S3, …).
 - Theme images/videos and CSS/JS are **self-hosted** in `wp-content/…` and `bajajmorocoo/…`.
 - The stylesheet (`main.css`), logo, footer and favicon were pulled from the live server and
   are now bundled locally, so the site does **not** depend on the live WordPress server.
-- A few well-known libraries stay on their CDNs (Google Fonts, Font Awesome, Swiper) and the
-  Spain hero video stays on its original host — these load fine on any domain.
+- A few well-known libraries stay on their CDNs (Google Fonts, Font Awesome, Swiper, EmailJS).
 
-## ⚠️ REQUIRED: Set up the contact forms (Formspree)
+## ⚠️ REQUIRED: Set up the forms with EmailJS
 
-There are **two** lead-capture forms and both were wired to Formspree. Until you paste your
-real Formspree ID, submissions will not be delivered.
+The two lead forms send email **directly from the browser via EmailJS** (no backend):
+1. **Enquiry pop-up panel** — the main "Schedule your Test Ride" button, on every page
+   (fields: `name`, `phone`, `city`, `dealer`, `timeline`, `model`, `whatsapp`).
+2. **"Schedule your Test Ride" form** on `/test-ride/`
+   (fields: `model`, `name`, `surname`, `telephone`, `email`, `dealership`).
 
-Both forms currently point to the placeholder `https://formspree.io/f/YOUR_FORM_ID`.
+Until you paste your 3 EmailJS IDs, submissions will not be delivered.
 
-### 1. Create a free Formspree account
-1. Go to <https://formspree.io> and click **Sign up** (free "Free" plan = 50 submissions/month).
-2. Verify your email.
-3. Click **+ New Form**.
-4. Set **Send emails to:** `z.elhaimri@gmail.com` and give it a name (e.g. "Bajaj Test Ride").
-5. Formspree shows an endpoint like `https://formspree.io/f/abcdwxyz` — copy the **form ID**
-   (the `abcdwxyz` part after `/f/`).
-6. Send one test submission from the site and click the confirmation link Formspree emails to
-   `z.elhaimri@gmail.com` (Formspree requires confirming the destination address once).
+### 1. Create a free EmailJS account
+1. Go to <https://www.emailjs.com> and sign up (free plan = 200 emails/month).
+2. **Email Services → Add New Service** → connect the inbox that should *send* the mail
+   (e.g. a Gmail account). Copy the **Service ID** (looks like `service_xxxxxxx`).
+3. **Email Templates → Create New Template**:
+   - **To Email:** `z.elhaimri@gmail.com`  ← where the leads arrive
+   - **From Name / Reply-To:** you can use `{{name}}` and `{{email}}`
+   - **Subject:** `Nouvelle demande de Test Ride — Bajaj Morocco`
+   - **Content** (paste this — the double fields cover both forms; the empty one just shows blank):
+     ```
+     Modèle:          {{model}}
+     Nom:             {{name}} {{surname}}
+     Téléphone:       {{telephone}}{{phone}}
+     Email:           {{email}}
+     Ville:           {{city}}
+     Concessionnaire: {{dealership}}{{dealer}}
+     Délai d'achat:   {{timeline}}
+     WhatsApp:        {{whatsapp}}
+     ```
+   - Save and copy the **Template ID** (looks like `template_xxxxxxx`).
+4. **Account → General / API Keys** → copy your **Public Key** (looks like `XXXXXXXXXXXXXXXX`).
 
-### 2. Put your form ID into the site
-Replace every `YOUR_FORM_ID` with your real ID (10 occurrences: the pop-up enquiry panel on all
-9 pages + the "Schedule your Test Ride" form on `/test-ride/`). From the repo root:
-
+### 2. Put your 3 IDs into the site
+Replace the placeholders everywhere (from the repo root):
 ```bash
-# macOS
-grep -rl 'YOUR_FORM_ID' . --include=*.html | xargs sed -i '' 's#formspree.io/f/YOUR_FORM_ID#formspree.io/f/abcdwxyz#g'
 # Linux
-grep -rl 'YOUR_FORM_ID' . --include=*.html | xargs sed -i 's#formspree.io/f/YOUR_FORM_ID#formspree.io/f/abcdwxyz#g'
+grep -rl 'YOUR_PUBLIC_KEY\|YOUR_SERVICE_ID\|YOUR_TEMPLATE_ID' . --include=*.html | xargs sed -i \
+  -e 's/YOUR_PUBLIC_KEY/XXXXXXXXXXXXXXXX/g' \
+  -e 's/YOUR_SERVICE_ID/service_xxxxxxx/g' \
+  -e 's/YOUR_TEMPLATE_ID/template_xxxxxxx/g'
+# macOS: use  sed -i ''  instead of  sed -i
 ```
-(replace `abcdwxyz` with your real ID), then commit and push.
+(substitute your real values), then commit and push.
 
-### How the forms behave
-- **Enquiry pop-up panel** (main "Schedule your Test Ride" button, on every page): submits by
-  AJAX to Formspree and shows the existing on-page "Merci !" success message. Fields: name,
-  phone, city, dealer, purchase timeline, WhatsApp opt-in.
-- **"Schedule your Test Ride" form** on `/test-ride/`: submits by AJAX to Formspree and shows a
-  success message in place. Fields: model, name, surname, telephone, email, dealership.
-
-Both email to whatever address you set on the Formspree form.
+### How it works
+- EmailJS SDK is loaded in each page's `<head>` and initialised with your Public Key.
+- The **test-ride form** calls `emailjs.sendForm(SERVICE, TEMPLATE, form)` — it sends every
+  named field automatically.
+- The **enquiry panel** calls `emailjs.send(SERVICE, TEMPLATE, params)` with its fields.
+- Both show the existing on-page "Merci !" success message and never redirect away.
 
 ## Notes
 - Harmless leftover WordPress `<head>` discovery tags (`/feed/`, `/wp-json/`, `/xmlrpc.php`)

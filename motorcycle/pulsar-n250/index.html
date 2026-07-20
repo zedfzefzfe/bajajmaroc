@@ -195,6 +195,9 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
     @media (max-width: 1040px) { .bjmega-drop { display: none !important; } }
     @media (max-width: 900px)  { .bjmega-grid { grid-template-columns: repeat(3, 1fr) !important; } }
     </style>
+<!-- EmailJS: client-side email for the test-ride forms -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>window.emailjs && emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });</script>
 </head>
 <body class="wp-singular motorcycle-template-default single single-motorcycle postid-6 wp-embed-responsive wp-theme-generatepress wp-child-theme-bajaj-morocoo right-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover">
     
@@ -2240,19 +2243,19 @@ body.bjmenq-lock { overflow: hidden; }
         submitBtn.textContent = 'Envoi…';
 
         var fd = new FormData();
-        fd.append('_subject', 'Nouvelle demande - Bajaj Morocco');
-        fd.append('name', fval('name'));
-        fd.append('phone', fval('phone'));
-        fd.append('city', fval('city'));
-        fd.append('dealer', fval('dealer'));
-        fd.append('timeline', fval('timeline'));
-        fd.append('model', nameEl.textContent.trim());
-        fd.append('whatsapp', (waToggle && waToggle.checked) ? 'Oui' : 'Non');
+        var params = {
+            name:     fval('name'),
+            phone:    fval('phone'),
+            city:     fval('city'),
+            dealer:   fval('dealer'),
+            timeline: fval('timeline'),
+            model:    nameEl.textContent.trim(),
+            whatsapp: (waToggle && waToggle.checked) ? 'Oui' : 'Non'
+        };
 
-        fetch(enqAjax, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
-            .then(function(r){ return r.json(); })
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
             .then(function(res){
-                if (res && (res.ok || res.success)) {
+                if (res && res.status === 200) {
                     /* Success -> show thank-you, then reset + close after a few seconds */
                     formWrap.style.display = 'none';
                     successWrap.style.display = 'block';

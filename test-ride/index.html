@@ -195,6 +195,9 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
     @media (max-width: 1040px) { .bjmega-drop { display: none !important; } }
     @media (max-width: 900px)  { .bjmega-grid { grid-template-columns: repeat(3, 1fr) !important; } }
     </style>
+<!-- EmailJS: client-side email for the test-ride forms -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>window.emailjs && emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });</script>
 </head>
 <body class="wp-singular page-template page-template-page-test-ride page-template-page-test-ride-php page page-id-10 wp-embed-responsive wp-theme-generatepress wp-child-theme-bajaj-morocoo right-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover">
     
@@ -614,8 +617,7 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
         
 <div class="wpcf7 no-js" id="wpcf7-f12-p10-o1" lang="" dir="ltr" data-wpcf7-id="12">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="post" class="wpcf7-form init" aria-label="Contact form" data-status="init">
-<input type="hidden" name="_subject" value="Nouvelle demande de Test Ride - Bajaj Morocco">
+<form action="#" method="post" class="wpcf7-form init" aria-label="Contact form" data-status="init">
 <div class="custom-cf7-form">
 	<p class="form-title">Schedule your Test Ride
 	</p>
@@ -652,9 +654,9 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
 f.addEventListener('submit',function(e){e.preventDefault();
 var out=f.querySelector('.wpcf7-response-output'),btn=f.querySelector('.wpcf7-submit');if(btn)btn.disabled=true;
-fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
-.then(function(r){return r.json();}).then(function(res){if(res&&(res.ok||res.success)){f.reset();
-if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#0a7d2c;margin-top:12px;';out.textContent='Merci ! Votre demande a bien \u00e9t\u00e9 envoy\u00e9e.';}}else{throw new Error();}})
+emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",f)
+.then(function(){f.reset();
+if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#0a7d2c;margin-top:12px;';out.textContent='Merci ! Votre demande a bien \u00e9t\u00e9 envoy\u00e9e.';}})
 .catch(function(){if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#c00;margin-top:12px;';out.textContent="Une erreur s'est produite. R\u00e9essayez ou contactez-nous sur WhatsApp.";}})
 .finally(function(){if(btn)btn.disabled=false;});});})();
 </script>
@@ -1343,19 +1345,19 @@ body.bjmenq-lock { overflow: hidden; }
         submitBtn.textContent = 'Envoi…';
 
         var fd = new FormData();
-        fd.append('_subject', 'Nouvelle demande - Bajaj Morocco');
-        fd.append('name', fval('name'));
-        fd.append('phone', fval('phone'));
-        fd.append('city', fval('city'));
-        fd.append('dealer', fval('dealer'));
-        fd.append('timeline', fval('timeline'));
-        fd.append('model', nameEl.textContent.trim());
-        fd.append('whatsapp', (waToggle && waToggle.checked) ? 'Oui' : 'Non');
+        var params = {
+            name:     fval('name'),
+            phone:    fval('phone'),
+            city:     fval('city'),
+            dealer:   fval('dealer'),
+            timeline: fval('timeline'),
+            model:    nameEl.textContent.trim(),
+            whatsapp: (waToggle && waToggle.checked) ? 'Oui' : 'Non'
+        };
 
-        fetch(enqAjax, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
-            .then(function(r){ return r.json(); })
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
             .then(function(res){
-                if (res && (res.ok || res.success)) {
+                if (res && res.status === 200) {
                     /* Success -> show thank-you, then reset + close after a few seconds */
                     formWrap.style.display = 'none';
                     successWrap.style.display = 'block';
