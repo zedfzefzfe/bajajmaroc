@@ -59,7 +59,7 @@ nav.bjj-desktop-nav {
 
 .bjj-cta-wrap { display: flex !important; align-items: center !important; padding: 0 40px 0 16px !important; flex: 0 0 auto !important; }
 .bjj-cta-btn {
-  background: #fff !important; color: #004AAD !important; border: 2px solid #fff !important;
+  background: transparent !important; color: #fff !important; border: 2px solid #fff !important;
   border-radius: 24px !important; padding: 8px 20px !important;
   font-family: 'Lato', sans-serif !important; font-size: 12px !important; font-weight: 700 !important;
   text-decoration: none !important; text-transform: uppercase !important; 
