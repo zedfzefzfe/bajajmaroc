@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var popupHtml =
                 '<div class="bjd-popup-name">' + d.name + '</div>' +
                 '<div class="bjd-popup-addr">' + d.address + '</div>' +
-                '<a class="bjd-popup-link" href="/concessionnaires/'&#32;+&#32;d.maps&#32;+&#32;'" target="_blank" rel="noopener">Itinéraire →</a>';
+                '<a class="bjd-popup-link" href="' + d.maps + '" target="_blank" rel="noopener">Itinéraire →</a>';
             var marker = L.marker([d.lat, d.lng], { icon: pinIcon }).addTo(bjdMap).bindPopup(popupHtml);
             bjdMarkers[idx] = marker;
             allLatLngs.push([d.lat, d.lng]);
