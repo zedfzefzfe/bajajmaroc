@@ -497,6 +497,18 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
             background-size: 15px;
             color: #666;
         }
+
+        /* Date field: brand-colored calendar icon, matches select arrow color */
+        input.wpcf7-date {
+            color: #666;
+        }
+        input.wpcf7-date:valid {
+            color: var(--text-color);
+        }
+        input.wpcf7-date::-webkit-calendar-picker-indicator {
+            filter: invert(29%) sepia(89%) saturate(1980%) hue-rotate(190deg) brightness(93%) contrast(101%);
+            cursor: pointer;
+        }
         
         select.form-control option,
         select.wpcf7-select option {
@@ -639,6 +651,11 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
 		</p>
 	</div>
 	<div class="form-group">
+		<label for="tr-date-field" style="display:block;font-size:12px;font-weight:600;color:#666;margin-bottom:6px;">Preferred test ride date</label>
+		<p><span class="wpcf7-form-control-wrap" data-name="preferred_date"><input id="tr-date-field" class="wpcf7-form-control wpcf7-date form-control" required aria-required="true" aria-invalid="false" type="date" name="preferred_date" /></span>
+		</p>
+	</div>
+	<div class="form-group">
 		<p><span class="wpcf7-form-control-wrap" data-name="dealership"><select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required form-control" required aria-required="true" aria-invalid="false" name="dealership"><option value="">Chosen dealership</option><option value="VJ Motors — Casablanca">VJ Motors — Casablanca</option><option value="Motomania — Casablanca">Motomania — Casablanca</option></select></span>
 		</p>
 	</div>
@@ -649,6 +666,8 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
 </div><div class="wpcf7-response-output" aria-hidden="true"></div>
 <script>
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
+var dateField=document.getElementById('tr-date-field');
+if(dateField){var today=new Date();var min=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');dateField.setAttribute('min',min);}
 f.addEventListener('submit',function(e){e.preventDefault();
 var out=f.querySelector('.wpcf7-response-output'),btn=f.querySelector('.wpcf7-submit');if(btn)btn.disabled=true;
 emailjs.sendForm("service_8i4jue1","template_rpnvap9",f)
