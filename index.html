@@ -255,6 +255,7 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
 
 <nav class="bjj-mobile-nav" id="bjj-mobileNav" aria-label="Mobile navigation">
         <div id="bjj-mob-main">
+          <div class="bjj-mob-item"><a href="/test-ride/" class="bjj-mob-btn">Réserver un essai</a></div>
           <div class="bjj-mob-item"><a href="index.html" class="bjj-mob-btn">Home</a></div>
           <div class="bjj-mob-item"><a href="/motorcycle/" class="bjj-mob-btn">Motos</a></div>
           <div class="bjj-mob-item"><a href="notre-histoire/index.html" class="bjj-mob-btn">Notre Histoire</a></div>
@@ -267,17 +268,21 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
   const ham = document.getElementById('bjj-ham');
   const mobileNav = document.getElementById('bjj-mobileNav');
 
+  const siteHeaderEl = document.getElementById('bjj-site-header');
+
   ham.addEventListener('click', function () {
     const isOpen = mobileNav.classList.contains('open');
     if (isOpen) {
       mobileNav.classList.remove('open');
       ham.classList.remove('open');
       ham.setAttribute('aria-expanded', 'false');
+      if (siteHeaderEl) siteHeaderEl.classList.remove('bjj-mobmenu-open');
       document.querySelectorAll('.bjj-mob-panel').forEach(p => p.classList.remove('active'));
     } else {
       mobileNav.classList.add('open');
       ham.classList.add('open');
       ham.setAttribute('aria-expanded', 'true');
+      if (siteHeaderEl) siteHeaderEl.classList.add('bjj-mobmenu-open');
     }
   });
 
