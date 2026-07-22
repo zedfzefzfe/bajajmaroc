@@ -249,7 +249,7 @@ nav.bjj-desktop-nav {
   .bjj-cta-wrap { display: none !important; }
   .bjj-hamburger { display: flex !important; }
   .bjj-mobile-nav { display: block !important; }
-  .bjj-mobile-cta { display: none !important; }
+  .bjj-mobile-cta { display: flex !important; }
   .bjj-logo-block { padding-left: 16px !important; }
   /* Keep the header solid (matches the mobile nav panel below it) while the
      burger menu is open, instead of staying transparent over the hero image. */
