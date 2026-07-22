@@ -167,7 +167,7 @@ nav.bjj-desktop-nav {
   position: fixed !important;
   top: 110px !important; left: 0 !important; width: 100% !important;
   height: calc(100vh - 110px) !important;
-  background: #015cac !important;
+  background: #0a0a0c !important;
   z-index: 8998 !important;
   overflow: hidden !important;
   transform: translateX(-100%) !important;
@@ -210,7 +210,7 @@ nav.bjj-desktop-nav {
 
 .bjj-mob-panel {
   position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-  background: #015cac !important; transform: translateX(100%) !important;
+  background: #0a0a0c !important; transform: translateX(100%) !important;
   transition: transform 0.3s ease !important; overflow-y: auto !important; z-index: 2 !important;
 }
 .bjj-mob-panel.active { transform: translateX(0) !important; }
