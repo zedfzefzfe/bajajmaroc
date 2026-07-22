@@ -167,7 +167,7 @@ nav.bjj-desktop-nav {
   position: fixed !important;
   top: 80px !important; left: 0 !important; width: 100% !important;
   height: calc(100vh - 80px) !important;
-  background: #015cac !important;
+  background: #0a0a0c !important;
   z-index: 8998 !important;
   overflow: hidden !important;
   transform: translateX(-100%) !important;
@@ -177,7 +177,7 @@ nav.bjj-desktop-nav {
 
 #bjj-mob-main { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; overflow-y: auto !important; }
 
-.bjj-mob-item { border-bottom: 1px solid rgba(255,255,255,0.2) !important; }
+.bjj-mob-item { border-bottom: 1px solid rgba(255,255,255,0.08) !important; }
 .bjj-mob-btn {
   display: flex !important; justify-content: space-between !important; align-items: center !important;
   width: 100% !important; background: none !important; border: none !important; color: #fff !important;
@@ -186,9 +186,31 @@ nav.bjj-desktop-nav {
 }
 .bjj-mob-btn svg { width: 16px !important; height: 16px !important; flex-shrink: 0 !important; }
 
+/* -- "Motos" accordion submenu in the mobile burger menu -- */
+.bjj-mob-motos-toggle svg.bjj-mob-chev { transition: transform 0.3s !important; }
+.bjj-mob-motos-toggle.open svg.bjj-mob-chev { transform: rotate(180deg) !important; }
+.bjj-mob-sub { max-height: 0 !important; overflow: hidden !important; transition: max-height 0.35s ease !important; background: rgba(255,255,255,0.05) !important; }
+.bjj-mob-sub.open { max-height: 440px !important; }
+.bjj-mob-sub-link {
+  display: flex !important; align-items: center !important; gap: 16px !important;
+  padding: 12px 28px !important; color: #fff !important; text-decoration: none !important;
+  font-family: 'Lato', sans-serif !important; font-size: 16px !important; font-weight: 600 !important;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+.bjj-mob-sub-link img {
+  width: 72px !important; height: 46px !important; object-fit: contain !important;
+  flex-shrink: 0 !important; background: rgba(255,255,255,0.08) !important; border-radius: 6px !important;
+}
+.bjj-mob-sub-all {
+  display: block !important; padding: 14px 28px !important; color: #8fc6f5 !important;
+  font-family: 'Lato', sans-serif !important; font-size: 13px !important; font-weight: 700 !important;
+  text-decoration: none !important; text-transform: uppercase !important; letter-spacing: 0.5px !important;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+
 .bjj-mob-panel {
   position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-  background: #015cac !important; transform: translateX(100%) !important;
+  background: #0a0a0c !important; transform: translateX(100%) !important;
   transition: transform 0.3s ease !important; overflow-y: auto !important; z-index: 2 !important;
 }
 .bjj-mob-panel.active { transform: translateX(0) !important; }
@@ -231,7 +253,7 @@ nav.bjj-desktop-nav {
   .bjj-logo-block { padding-left: 16px !important; }
   /* Keep the header solid (matches the mobile nav panel below it) while the
      burger menu is open, instead of staying transparent over the hero image. */
-  #bjj-site-header.bjj-mobmenu-open { background: #015cac !important; }
+  #bjj-site-header.bjj-mobmenu-open { background: #0a0a0c !important; }
 }
 
 

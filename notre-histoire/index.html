@@ -261,7 +261,16 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
         <div id="bjj-mob-main">
           <div class="bjj-mob-item"><a href="/test-ride/" class="bjj-mob-btn">Réserver un essai</a></div>
           <div class="bjj-mob-item"><a href="../index.html" class="bjj-mob-btn">Home</a></div>
-          <div class="bjj-mob-item"><a href="/motorcycle/" class="bjj-mob-btn">Motos</a></div>
+          <div class="bjj-mob-item">
+            <button type="button" class="bjj-mob-btn bjj-mob-motos-toggle" id="bjjMobMotosToggle" aria-expanded="false">Motos <svg class="bjj-mob-chev" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+            <div class="bjj-mob-sub" id="bjjMobMotosSub">
+              <a href="/motorcycle/pulsar-n125/" class="bjj-mob-sub-link"><img src="/wp-content/themes/bajaj-morocoo/images/4.jpg" alt="Pulsar N125">Pulsar N125</a>
+              <a href="/motorcycle/pulsar-n250/" class="bjj-mob-sub-link"><img src="/wp-content/themes/bajaj-morocoo/images/3.jpg" alt="Pulsar N250">Pulsar N250</a>
+              <a href="/motorcycle/pulsar-ns-400z/" class="bjj-mob-sub-link"><img src="/wp-content/themes/bajaj-morocoo/images/1.jpg" alt="Pulsar NS 400Z">Pulsar NS 400Z</a>
+              <a href="/motorcycle/pulsar-rs200/" class="bjj-mob-sub-link"><img src="/wp-content/themes/bajaj-morocoo/images/2.jpg" alt="Pulsar RS200">Pulsar RS200</a>
+              <a href="/motorcycle/" class="bjj-mob-sub-all">Voir toutes les motos &rarr;</a>
+            </div>
+          </div>
           <div class="bjj-mob-item"><a href="index.html" class="bjj-mob-btn">Notre Histoire</a></div>
           <div class="bjj-mob-item"><a href="../concessionnaires/index.html" class="bjj-mob-btn">Concessionnaires</a></div>
       </div>
@@ -282,6 +291,10 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
       ham.setAttribute('aria-expanded', 'false');
       if (siteHeaderEl) siteHeaderEl.classList.remove('bjj-mobmenu-open');
       document.querySelectorAll('.bjj-mob-panel').forEach(p => p.classList.remove('active'));
+      const mobSubEl = document.getElementById('bjjMobMotosSub');
+      if (mobSubEl) mobSubEl.classList.remove('open');
+      const mobTogEl = document.getElementById('bjjMobMotosToggle');
+      if (mobTogEl) { mobTogEl.classList.remove('open'); mobTogEl.setAttribute('aria-expanded', 'false'); }
     } else {
       mobileNav.classList.add('open');
       ham.classList.add('open');
@@ -289,6 +302,16 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
       if (siteHeaderEl) siteHeaderEl.classList.add('bjj-mobmenu-open');
     }
   });
+
+  const mobMotosToggle = document.getElementById('bjjMobMotosToggle');
+  const mobMotosSub = document.getElementById('bjjMobMotosSub');
+  if (mobMotosToggle && mobMotosSub) {
+    mobMotosToggle.addEventListener('click', function () {
+      const subOpen = mobMotosSub.classList.toggle('open');
+      mobMotosToggle.classList.toggle('open', subOpen);
+      mobMotosToggle.setAttribute('aria-expanded', subOpen ? 'true' : 'false');
+    });
+  }
 
   document.querySelectorAll('.bjj-mob-btn[data-panel]').forEach(btn => {
     btn.addEventListener('click', function () {
