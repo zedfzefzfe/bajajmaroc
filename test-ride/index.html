@@ -412,6 +412,13 @@ body{background-color:var(--base-2);color:var(--contrast);}a{color:var(--accent)
         /* Remove the "Schedule your Test Ride" CTA button on this page. */
         html body #bjj-site-header#bjj-site-header .bjj-cta-wrap,
         html body #bjj-site-header#bjj-site-header .bjj-cta-btn { display: none !important; }
+        /* Mobile: the forced display:flex above outranks main.css's mobile
+           rule that hides the desktop nav, so counter it at the same
+           specificity inside the site's mobile breakpoint. Desktop (>1040px)
+           is unaffected. */
+        @media (max-width: 1040px) {
+            html body #bjj-site-header#bjj-site-header .bjj-desktop-nav { display: none !important; }
+        }
 
         :root {
             --primary-blue: #0056b3;
