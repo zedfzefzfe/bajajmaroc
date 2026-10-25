@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <!-- Language (FR / EN / AR): set lang/dir before the page renders; see /assets/i18n/ -->
+    <script>(function(){var l='fr';try{l=localStorage.getItem('bj-lang')||'fr'}catch(e){}if(['fr','en','ar'].indexOf(l)<0)l='fr';var h=document.documentElement;h.lang=l;h.dir=l==='ar'?'rtl':'ltr';h.className+=' bj-i18n-pending';setTimeout(function(){h.classList.remove('bj-i18n-pending')},2500);if(l==='ar')document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap">')})();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="pingback" href="/xmlrpc.php">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -217,6 +219,9 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
+<link rel="stylesheet" href="/assets/i18n/i18n.css">
+<script src="/assets/i18n/dict.js" defer></script>
+<script src="/assets/i18n/i18n.js" defer></script>
 </head>
 <body class="wp-singular page-template page-template-template-dealership page-template-template-dealership-php page page-id-9 wp-embed-responsive wp-theme-generatepress wp-child-theme-bajaj-morocoo right-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover">
     
@@ -234,6 +239,8 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
             <li><a href="index.html" class="bjj-nav-btn">Concessionnaires</a></li>
         </ul>
           </nav>
+
+  <div id="bj-lang" class="bj-lang"></div>
 
   <div class="bjj-mobile-cta">
     <a href="/test-ride/">TEST RIDE</a>
