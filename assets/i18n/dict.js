@@ -35,6 +35,13 @@ t: {
 
 /* ── Shared model-page content ── */
 "À partir de :": { en: "From:" },
+"À partir de": { en: "From" },
+"Prix": { en: "Price" },
+"Sur demande": { en: "On request" },
+"Découvrir la NS 400Z": { en: "Discover the NS 400Z" },
+"Découvrir la N250": { en: "Discover the N250" },
+"Découvrir la N125": { en: "Discover the N125" },
+"ou réserver un essai": { en: "or book a test ride" },
 "Découvrir le modèle": { en: "Discover the model" },
 "Cylindrée": { en: "Displacement" },
 "Puissance max": { en: "Max power" },
