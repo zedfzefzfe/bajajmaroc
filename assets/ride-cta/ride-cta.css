@@ -1,0 +1,94 @@
+/* Bajaj Maroc — floating "book a test ride" button (replaces the WhatsApp bubble).
+   The theme resets margin/padding on every element with !important, so the
+   spacing rules here need !important too. */
+
+.bj-ride {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 990 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 8px 20px 8px 8px !important;
+  border-radius: 999px !important;
+  background: rgba(13, 13, 16, .92) !important;
+  border: 1px solid rgba(255, 255, 255, .12) !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .35) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-family: 'Inter', 'Lato', sans-serif !important;
+  /* hidden until the visitor scrolls past the hero (ride-cta.js adds .bj-ride-in) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity .35s ease, transform .35s ease, visibility .35s, border-color .25s, box-shadow .25s;
+}
+.bj-ride.bj-ride-in { opacity: 1; visibility: visible; transform: none; }
+.bj-ride:hover,
+.bj-ride:focus-visible {
+  border-color: rgba(228, 0, 43, .7) !important;
+  box-shadow: 0 16px 44px rgba(228, 0, 43, .28) !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+.bj-ride:focus-visible { outline: 2px solid #fff !important; outline-offset: 3px !important; }
+
+.bj-ride-icon {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: #E4002B !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.bj-ride-icon svg { width: 24px !important; height: 24px !important; }
+/* soft ring every few seconds to draw the eye, without the old constant pulse */
+.bj-ride-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #E4002B;
+  opacity: 0;
+  animation: bj-ride-ring 4s ease-out 1.5s infinite;
+}
+@keyframes bj-ride-ring {
+  0%   { transform: scale(1);   opacity: .7; }
+  30%  { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.bj-ride-text { display: flex !important; flex-direction: column !important; line-height: 1.15 !important; }
+.bj-ride-eyebrow {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.6px !important;
+  text-transform: uppercase !important;
+  color: #ff4d6a !important;
+  margin-bottom: 3px !important;
+}
+.bj-ride-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  color: #fff !important;
+}
+.bj-ride-arrow { display: flex !important; transition: transform .25s ease !important; }
+.bj-ride-arrow svg { width: 18px !important; height: 18px !important; }
+.bj-ride:hover .bj-ride-arrow { transform: translateX(4px) !important; }
+
+@media (max-width: 560px) {
+  .bj-ride { right: 14px !important; bottom: 14px !important; gap: 10px !important; padding: 6px 16px 6px 6px !important; }
+  .bj-ride-icon { width: 40px !important; height: 40px !important; }
+  .bj-ride-title { font-size: 14px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bj-ride, .bj-ride-arrow { transition: none !important; }
+  .bj-ride-icon::after { animation: none; }
+}
