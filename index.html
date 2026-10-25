@@ -755,46 +755,47 @@ a.bj-product-img-wrap { cursor: pointer !important; text-decoration: none !impor
     margin-bottom: 6px !important;
 }
 .bj-price-label {
-    font-size: 12px !important;
+    font-size: 11px !important;
     font-weight: 700 !important;
-    letter-spacing: 1.5px !important;
+    letter-spacing: 1.2px !important;
     text-transform: uppercase !important;
     color: #777 !important;
     margin-bottom: 2px !important;
 }
 .bj-price-amount {
-    font-size: 34px !important;
-    font-weight: 900 !important;
-    line-height: 1.1 !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.3px !important;
+    line-height: 1.15 !important;
     color: #111 !important;
     white-space: nowrap !important;
 }
-.bj-price-amount sup { font-size: 16px !important; font-weight: 700 !important; vertical-align: super !important; color: #777 !important; }
-.bj-price-amount--soon { font-size: 26px !important; color: #333 !important; line-height: 1.3 !important; text-transform: none !important; }
+.bj-price-cur { font-size: 16px !important; font-weight: 700 !important; letter-spacing: 0 !important; }
+.bj-price-amount sup { font-size: 12px !important; font-weight: 400 !important; vertical-align: super !important; color: #888 !important; }
+.bj-price-amount--soon { font-size: 20px !important; font-weight: 700 !important; color: #333 !important; line-height: 1.3 !important; text-transform: none !important; }
 .bj-product-validity {
     font-family: 'Lato', sans-serif !important;
-    font-size: 13px !important;
+    font-size: 12px !important;
     font-weight: 700 !important;
     color: #015cac !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 16px !important;
     display: block !important;
 }
 .bj-cta-btn {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 10px !important;
-    min-width: 240px !important;
+    gap: 8px !important;
     background-color: #015cac !important;
     color: #ffffff !important;
     text-decoration: none !important;
-    padding: 15px 28px !important;
+    padding: 12px 26px !important;
     border-radius: 6px !important;
     font-family: 'Lato', sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 900 !important;
-    letter-spacing: 0.5px !important;
-    text-transform: uppercase !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    text-transform: none !important;
     transition: background-color 0.25s ease !important;
     border: none !important;
     cursor: pointer !important;
@@ -803,9 +804,9 @@ a.bj-product-img-wrap { cursor: pointer !important; text-decoration: none !impor
 .bj-cta-btn:hover { background-color: #013d78 !important; color: #ffffff !important; }
 .bj-cta-btn:hover .bj-cta-arrow { transform: translateX(4px) !important; }
 .bj-product-ride {
-    margin-top: 12px !important;
+    margin-top: 10px !important;
     font-family: 'Lato', sans-serif !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     color: #555 !important;
     text-decoration: underline !important;
     text-underline-offset: 3px !important;
@@ -817,6 +818,9 @@ a.bj-product-img-wrap { cursor: pointer !important; text-decoration: none !impor
 }
 @media (max-width: 560px) {
     .bj-products-grid { grid-template-columns: 1fr !important; }
+    .bj-price-amount { font-size: 24px !important; }
+    .bj-price-cur { font-size: 15px !important; }
+    .bj-cta-btn { font-size: 13.5px !important; padding: 11px 22px !important; }
 }
 
 
@@ -1522,7 +1526,7 @@ a.bj-product-img-wrap { cursor: pointer !important; text-decoration: none !impor
                 <div class="bj-product-buy">
                 <div class="bj-product-price">
                     <span class="bj-price-label">À partir de</span>
-                    <span class="bj-price-amount">55 000 DH<sup>*</sup></span>
+                    <span class="bj-price-amount">55 000 <span class="bj-price-cur">DH</span><sup>*</sup></span>
                 </div>
                 <span class="bj-product-validity">Financement disponible</span>
                 <a href="motorcycle/pulsar-ns-400z/index.html#decouvrir" class="bj-cta-btn">Découvrir la NS 400Z <span class="bj-cta-arrow" aria-hidden="true">→</span></a>
@@ -1539,7 +1543,7 @@ a.bj-product-img-wrap { cursor: pointer !important; text-decoration: none !impor
                 <div class="bj-product-buy">
                 <div class="bj-product-price">
                     <span class="bj-price-label">À partir de</span>
-                    <span class="bj-price-amount">36 000 DH<sup>*</sup></span>
+                    <span class="bj-price-amount">36 000 <span class="bj-price-cur">DH</span><sup>*</sup></span>
                 </div>
                 <span class="bj-product-validity">Financement disponible</span>
                 <a href="motorcycle/pulsar-n250/index.html#decouvrir" class="bj-cta-btn">Découvrir la N250 <span class="bj-cta-arrow" aria-hidden="true">→</span></a>
