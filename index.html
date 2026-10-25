@@ -593,6 +593,23 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
     color: #E4002B !important;
     text-decoration: none !important;
 }
+/* Second hero button: book a test ride (outlined, next to "Découvrir") */
+.bj2-hero .bj2-slide-cta-wrap { flex-wrap: wrap !important; gap: 14px !important; }
+.bj2-hero .bj2-slide-content .bj2-slide-btn--ride,
+.bj2-hero a.bj2-slide-btn--ride {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    padding: 14px 40px !important;
+}
+.bj2-hero .bj2-slide-content .bj2-slide-btn--ride:hover,
+.bj2-hero a.bj2-slide-btn--ride:hover {
+    background-color: #ffffff !important;
+    color: #0a0a0a !important;
+}
+@media (max-width: 480px) {
+    .bj2-hero .bj2-slide-content .bj2-slide-btn { padding-left: 28px !important; padding-right: 28px !important; }
+}
 
 /* Scroll hint */
 .bj2-scroll-hint {
@@ -1460,6 +1477,7 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
             <p class="bj2-slide-sub">Absolument Audacieuse</p>
             <div class="bj2-slide-cta-wrap">
                 <a href="#motos" class="bj2-slide-btn">Découvrir</a>
+                <a href="/test-ride/" class="bj2-slide-btn bj2-slide-btn--ride">Réserver un essai</a>
             </div>
         </div>
     </div>
