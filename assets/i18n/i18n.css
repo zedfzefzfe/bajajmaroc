@@ -1,4 +1,4 @@
-/* Bajaj Maroc — language switcher (FR / EN / AR) + Arabic (RTL) adjustments.
+/* Bajaj Maroc — language switcher (FR / EN).
    The theme resets margin/padding on every element with !important, so the
    rules here need !important too. */
 
@@ -58,7 +58,7 @@ html.bj-i18n-pending body { visibility: hidden !important; }
   border-radius: 6px !important;
   padding: 10px 14px !important;
   color: #1a1a1a !important;
-  font-family: 'Lato', 'Cairo', sans-serif !important;
+  font-family: 'Lato', sans-serif !important;
   font-size: 14px !important;
   font-weight: 700 !important;
   text-align: start !important;
@@ -72,29 +72,4 @@ html.bj-i18n-pending body { visibility: hidden !important; }
   #bj-lang + .bjj-mobile-cta { margin-left: 8px !important; }
   #bj-lang.bj-lang-edge { margin-right: 0 !important; }
   #bj-lang .bj-lang-btn { font-size: 13px !important; padding: 8px 4px !important; }
-}
-
-/* ── Arabic ─────────────────────────────────────────────────────────────── */
-html[lang="ar"] body,
-html[lang="ar"] body * {
-  font-family: 'Cairo', 'Lato', sans-serif !important;
-  letter-spacing: 0 !important; /* spacing breaks the joined Arabic letters */
-}
-html[lang="ar"] .fa, html[lang="ar"] .fas, html[lang="ar"] .far,
-html[lang="ar"] .fab, html[lang="ar"] [class*="fa-"] { font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important; }
-html[lang="ar"] .fab { font-family: 'Font Awesome 6 Brands' !important; }
-html[lang="ar"] .bjb-trust-number { white-space: nowrap !important; font-size: clamp(2rem, 4vw, 3.2rem) !important; }
-/* Keep Latin handles / emails / phone numbers in their own left-to-right order. */
-html[dir="rtl"] .bj-insta-handle,
-html[dir="rtl"] a[href^="mailto:"],
-html[dir="rtl"] a[href^="tel:"] { direction: ltr !important; unicode-bidi: isolate !important; }
-html[dir="rtl"] #bj-lang { margin-left: 0 !important; margin-right: auto !important; }
-html[dir="rtl"] #bj-lang.bj-lang-edge { margin-left: 40px !important; }
-html[dir="rtl"] #bj-lang .bj-lang-menu { right: auto !important; left: 0 !important; }
-html[dir="rtl"] .bjj-cta-wrap { padding: 0 16px 0 40px !important; }
-html[dir="rtl"] .bjj-logo-block { padding: 0 40px 0 20px !important; }
-@media (max-width: 1040px) {
-  html[dir="rtl"] #bj-lang + .bjj-mobile-cta { margin-left: 10px !important; margin-right: 8px !important; }
-  html[dir="rtl"] #bj-lang.bj-lang-edge { margin-left: 0 !important; }
-  html[dir="rtl"] .bjj-logo-block { padding: 0 16px 0 20px !important; }
 }
