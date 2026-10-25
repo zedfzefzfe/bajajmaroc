@@ -1,4 +1,4 @@
-/* Bajaj Maroc — FR / EN / AR language switcher.
+/* Bajaj Maroc — FR / EN language switcher.
    The pages are written in French (with a few English labels). On load, every
    text node, a few attributes (placeholder, alt, aria-label, title, button
    values), the <title> and the meta description are looked up in the
@@ -6,12 +6,12 @@
    by page scripts (form messages, counters, sliders) is caught by a
    MutationObserver. Changing language stores the choice and reloads the page,
    so translation always starts from the original markup.
-   The <head> snippet on every page sets <html lang/dir> before anything renders. */
+   The <head> snippet on every page sets <html lang> before anything renders. */
 (function () {
   'use strict';
 
-  var LANGS = ['fr', 'en', 'ar'];
-  var LABELS = { fr: 'Français', en: 'English', ar: 'العربية' };
+  var LANGS = ['fr', 'en'];
+  var LABELS = { fr: 'Français', en: 'English' };
   var KEY = 'bj-lang';
 
   function stored() {
@@ -23,7 +23,7 @@
 
   function norm(s) { return s.replace(/[\s  ]+/g, ' ').trim(); }
 
-  // Dictionary entries hold { en, ar, fr }; a missing language keeps the source text.
+  // Dictionary entries hold { en, fr }; a missing language keeps the source text.
   function lookup(src) {
     var e = D.t[src];
     if (e && e[lang] != null) return e[lang];
