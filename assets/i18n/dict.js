@@ -56,16 +56,10 @@ t: {
 "Localisation…": { en: "Locating…" },
 "Envoi…": { en: "Sending…" },
 
-/* ── Floating test-ride button ── */
-"Essai gratuit": { en: "Free test ride" },
-"Prenez le guidon": { en: "Get in the saddle" },
-"Essayez la N125": { en: "Ride the N125" },
-"Essayez la N250": { en: "Ride the N250" },
-"Essayez la NS400Z": { en: "Ride the NS400Z" },
-"Réserver un essai gratuit": { en: "Book a free test ride" },
-"Réserver un essai gratuit de la Pulsar N125": { en: "Book a free test ride on the Pulsar N125" },
-"Réserver un essai gratuit de la Pulsar N250": { en: "Book a free test ride on the Pulsar N250" },
-"Réserver un essai gratuit de la Pulsar NS 400Z": { en: "Book a free test ride on the Pulsar NS 400Z" },
+/* ── Floating test-ride button ("Réserver un essai" is above) ── */
+"Essayer la N125": { en: "Ride the N125" },
+"Essayer la N250": { en: "Ride the N250" },
+"Essayer la NS400Z": { en: "Ride the NS400Z" },
 
 /* ── Shared model-page content ── */
 "À partir de :": { en: "From:" },
