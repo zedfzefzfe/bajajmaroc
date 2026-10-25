@@ -570,23 +570,6 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
             color: var(--text-color);
         }
 
-        /* Purchase question: three tappable options styled like the inputs */
-        .pay-pref { border: 0; margin: 22px 0 18px !important; padding: 0 !important; min-width: 0; }
-        .pay-question { font-size: 14px; font-weight: 600; color: var(--text-color); padding: 0 !important; }
-        .pay-hint { font-size: 12px; color: #888; margin: 4px 0 12px !important; }
-        .pay-options { display: flex; gap: 8px; }
-        .pay-option { flex: 1 1 0; position: relative; cursor: pointer; }
-        .pay-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-        .pay-option span {
-            display: flex; align-items: center; justify-content: center; text-align: center;
-            min-height: 48px; height: 100%; padding: 10px 8px !important;
-            font-size: 13px; line-height: 1.25; color: var(--text-color);
-            background-color: var(--input-bg); border: 1px solid var(--input-border); border-radius: 4px;
-            transition: border-color .2s ease, background-color .2s ease, color .2s ease;
-        }
-        .pay-option:hover span { border-color: var(--primary-blue); }
-        .pay-option input:checked + span { border-color: var(--primary-blue); background-color: #eef4fb; color: var(--primary-blue); font-weight: 600; }
-        .pay-option input:focus-visible + span { outline: 2px solid var(--primary-blue); outline-offset: 2px; }
 
         /* Contact Preference Radios */
         .contact-pref {
@@ -719,15 +702,10 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 		<p><span class="wpcf7-form-control-wrap" data-name="telephone"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel form-control" required aria-required="true" aria-invalid="false" placeholder="Téléphone" value="" type="tel" name="telephone" /></span>
 		</p>
 	</div>
-	<fieldset class="form-group pay-pref">
-		<legend class="pay-question">Si elle vous plaît, comment l’envisageriez-vous ?</legend>
-		<p class="pay-hint">Simple indication, sans aucun engagement.</p>
-		<div class="pay-options">
-			<label class="pay-option"><input type="radio" name="payment" value="Au comptant"><span>Au comptant</span></label>
-			<label class="pay-option"><input type="radio" name="payment" value="Crédit à 0 %"><span>Crédit à 0 %</span></label>
-			<label class="pay-option"><input type="radio" name="payment" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label>
-		</div>
-	</fieldset>
+	<div class="form-group">
+		<p><span class="wpcf7-form-control-wrap" data-name="payment"><select class="wpcf7-form-control wpcf7-select form-control" aria-label="Mode de paiement" name="payment"><option value="">Comment souhaitez-vous l’acheter ?</option><option value="Au comptant">Au comptant</option><option value="Crédit à 0 %">Crédit à 0 %</option></select></span>
+		</p>
+	</div>
 	<div class="form-group">
 		<p><input class="wpcf7-form-control wpcf7-submit has-spinner btn-submit" type="submit" value="Réserver mon essai" />
 		</p>
