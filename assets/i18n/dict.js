@@ -405,7 +405,6 @@ t: {
 "Crédit à 0 %": { en: "0% financing" },
 "Merci !": { en: "Thank you!" },
 "Votre demande a bien été envoyée. Un membre de notre équipe vous contactera très prochainement.": { en: "Your request has been sent. A member of our team will contact you very soon." },
-"Envoyer mes infos sur WhatsApp": { en: "Send my details on WhatsApp" },
 "Une erreur s'est produite. Réessayez ou contactez-nous sur WhatsApp.": { en: "Something went wrong. Please try again or contact us on WhatsApp." },
 "Test Ride – Bajaj Morocco": { fr: "Essai – Bajaj Maroc" },
 "Test Ride — moto Bajaj disponible au Maroc. Bajaj Maroc (Bajaj Morocco), concessionnaires à Casablanca.": { en: "Test Ride — Bajaj motorcycles available in Morocco. Bajaj Morocco, dealerships in Casablanca." }
