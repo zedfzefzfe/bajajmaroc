@@ -397,6 +397,7 @@ t: {
 "Prénom": { en: "First name" },
 "Nom": { en: "Last name" },
 "Téléphone": { en: "Phone" },
+"Réserver mon essai": { en: "Book my test ride" },
 "Réserver mon essai →": { en: "Book my test ride →" },
 "C’est gratuit et sans engagement.": { en: "It’s free, with no commitment." },
 "Comment souhaitez-vous l’acheter ?": { en: "How would you like to buy it?" },
