@@ -1,39 +1,76 @@
-/* Bajaj Maroc — floating "book a test ride" button (replaces the WhatsApp bubble).
-   Same look as the red hero button ("Découvrir"): square corners, bold uppercase,
-   white on hover. The theme resets padding with !important, so it needs !important too. */
+/* Bajaj Maroc — floating "Essai gratuit" button (leads to the test-ride form).
+   Light glossy pill with the label on the left and a dark round arrow on the right;
+   the arrow turns Bajaj red on hover. The theme resets padding with !important,
+   so spacing here needs !important too. */
 
 .bj-ride {
   position: fixed !important;
   right: 24px !important;
   bottom: 24px !important;
   z-index: 990 !important;
-  display: inline-block !important;
-  padding: 16px 30px !important;
-  background-color: #E4002B !important;
-  color: #fff !important;
-  border-radius: 0 !important;
-  font-family: 'Inter', 'Lato', sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 6px 6px 6px 24px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #f7f7f7 0%, #e4e4e4 100%) !important;
+  border: 1px solid rgba(255, 255, 255, .9) !important;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, .22),
+    0 2px 6px rgba(0, 0, 0, .10),
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 -1px 0 rgba(0, 0, 0, .06) !important;
+  color: #1c1c1e !important;
   text-decoration: none !important;
-  line-height: 1 !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .25) !important;
+  font-family: 'Inter', 'Lato', sans-serif !important;
   /* hidden until the visitor scrolls past the hero (ride-cta.js adds .bj-ride-in) */
   opacity: 0;
   visibility: hidden;
-  transition: opacity .3s ease, visibility .3s, background-color .3s ease, color .3s ease;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s, box-shadow .25s ease;
 }
-.bj-ride.bj-ride-in { opacity: 1; visibility: visible; }
+.bj-ride.bj-ride-in { opacity: 1; visibility: visible; transform: none; }
 .bj-ride:hover,
 .bj-ride:focus-visible {
-  background-color: #fff !important;
-  color: #E4002B !important;
+  color: #1c1c1e !important;
   text-decoration: none !important;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, .26),
+    0 2px 6px rgba(0, 0, 0, .10),
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 -1px 0 rgba(0, 0, 0, .06) !important;
 }
-.bj-ride:focus-visible { outline: 2px solid #E4002B !important; outline-offset: 2px !important; }
+.bj-ride:focus-visible { outline: 2px solid #E4002B !important; outline-offset: 3px !important; }
+
+.bj-ride-label {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.1px !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+.bj-ride-go {
+  flex: 0 0 auto !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: #1c1c1e !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color .25s ease !important;
+}
+.bj-ride-go svg { width: 18px !important; height: 18px !important; transition: transform .25s ease !important; }
+.bj-ride:hover .bj-ride-go,
+.bj-ride:focus-visible .bj-ride-go { background: #E4002B !important; }
+.bj-ride:hover .bj-ride-go svg { transform: translateX(2px) !important; }
 
 @media (max-width: 560px) {
-  .bj-ride { right: 14px !important; bottom: 14px !important; padding: 14px 22px !important; font-size: 13px !important; letter-spacing: 1.5px !important; }
+  .bj-ride { right: 14px !important; bottom: 14px !important; gap: 12px !important; padding: 5px 5px 5px 20px !important; }
+  .bj-ride-label { font-size: 15px !important; }
+  .bj-ride-go { width: 40px !important; height: 40px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bj-ride, .bj-ride-go, .bj-ride-go svg { transition: none !important; }
 }

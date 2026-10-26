@@ -28,10 +28,6 @@ t: {
 "Mobile navigation": { fr: "Navigation mobile" },
 "Verified Seal": { fr: "Sceau vérifié" },
 
-/* ── Floating test-ride button ("Réserver un essai" is above) ── */
-"Essayer la N125": { en: "Ride the N125" },
-"Essayer la N250": { en: "Ride the N250" },
-"Essayer la NS400Z": { en: "Ride the NS400Z" },
 
 /* ── Shared model-page content ── */
 "À partir de :": { en: "From:" },
