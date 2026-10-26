@@ -403,7 +403,7 @@ t: {
 "Mode de paiement": { en: "Payment method" },
 "Au comptant": { en: "Cash" },
 "Crédit à 0 %": { en: "0% financing" },
-"Merci ! 🎉": { en: "Thank you! 🎉" },
+"Merci !": { en: "Thank you!" },
 "Votre demande d'essai a bien été envoyée. Un membre de notre équipe vous contactera très prochainement pour organiser votre essai.": { en: "Your test ride request has been sent. A member of our team will contact you very soon to arrange your test ride." },
 "Une erreur s'est produite. Réessayez ou contactez-nous sur WhatsApp.": { en: "Something went wrong. Please try again or contact us on WhatsApp." },
 "Test Ride – Bajaj Morocco": { fr: "Essai – Bajaj Maroc" },
