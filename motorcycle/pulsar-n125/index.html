@@ -719,18 +719,18 @@ html { scroll-behavior: smooth; }
 .bjm-intro-text  { width: 100% !important; }
 .bjm-intro-media { width: 100% !important; text-align: center !important; }
 
-/* Phones / tablets (stacked layout): name, then the bike, then colours and buttons,
-   with the description last. The text block's children join the column so the
-   bike can sit between them. */
+/* Phones / tablets (stacked layout): the bike comes right after the name and price;
+   description, colours and buttons follow in their usual order. The text block's
+   children join the column so the bike can sit between them. */
 @media (max-width: 1023px) {
     .bjm-intro { gap: 0 !important; }
     .bjm-intro-text { display: contents !important; }
     .bjm-intro-text > * { order: 1; }
     .bjm-intro-media { order: 2; margin: 8px 0 28px !important; }
+    .bjm-intro-text > .bjm-text,
     .bjm-intro-text > .bjm-colors-label,
     .bjm-intro-text > .bjm-colors-row,
     .bjm-intro-text > .bjm-btn-row { order: 3; }
-    .bjm-intro-text > .bjm-text { order: 4; margin-top: 30px !important; margin-bottom: 0 !important; }
 }
 
 .bjm-price-line { font-size: clamp(15px, 2vw, 18px) !important; color: #333 !important; margin-bottom: 4px !important; }
