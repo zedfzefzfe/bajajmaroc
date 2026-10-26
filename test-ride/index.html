@@ -658,24 +658,24 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
             background-color: var(--button-hover-blue);
         }
 
-        /* Main call to action: site red (same as "Découvrir"), stronger than the theme's grey submit style */
+        /* Main call to action: brand blue (same as the form title), stronger than the theme's grey submit style */
         .custom-cf7-form input.wpcf7-submit[type="submit"] {
-            background-color: #E4002B;
+            background-color: var(--primary-blue);
             color: #fff;
             font-size: 15px;
             font-weight: 700;
             letter-spacing: 1.5px;
             padding: 18px !important;
             border-radius: 4px;
-            box-shadow: 0 6px 16px rgba(228, 0, 43, .25);
+            box-shadow: 0 6px 16px rgba(0, 86, 179, .25);
             transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
         }
         .custom-cf7-form input.wpcf7-submit[type="submit"]:hover,
         .custom-cf7-form input.wpcf7-submit[type="submit"]:focus-visible {
-            background-color: #b80023;
+            background-color: var(--button-hover-blue);
             color: #fff;
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(228, 0, 43, .32);
+            box-shadow: 0 8px 20px rgba(0, 86, 179, .32);
         }
         .custom-cf7-form input.wpcf7-submit[type="submit"]:disabled { opacity: .7; cursor: wait; transform: none; }
         .submit-note { text-align: center; font-size: 12px; color: #888; margin-top: 10px !important; }
