@@ -738,6 +738,10 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
 var wanted=new URLSearchParams(location.search).get('model'),modelSel=f.querySelector('select[name=model]');
 if(wanted&&modelSel){for(var i=0;i<modelSel.options.length;i++){if(modelSel.options[i].value===wanted){modelSel.selectedIndex=i;break;}}}
+/* Put the cursor in the first field to fill so visitors can start typing right away
+   (runs once the page is shown; on iPhone the keyboard still waits for a tap). */
+function focusFirst(){var el=f.querySelector('input[name=name]');if(el&&!el.value&&document.activeElement===document.body){el.focus();}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(focusFirst,0);});else setTimeout(focusFirst,0);
 f.addEventListener('submit',function(e){e.preventDefault();
 var out=f.querySelector('.wpcf7-response-output'),btn=f.querySelector('.wpcf7-submit');if(btn)btn.disabled=true;
 emailjs.sendForm("service_8i4jue1","template_rpnvap9",f)
