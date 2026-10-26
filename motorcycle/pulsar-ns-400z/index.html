@@ -770,6 +770,10 @@ html { scroll-behavior: smooth; }
 .bjm-color-dot:hover, .bjm-color-dot.bjm-color-active { outline-color: #015cac !important; }
 
 .bjm-intro-img { width: 100% !important; max-width: 640px !important; display: block !important; margin: 0 auto !important; filter: drop-shadow(0 25px 30px rgba(0,0,0,.15)) !important; transition: opacity .2s ease !important; }
+/* Phones: let the bike photo use the full screen width (past the container's side padding) so the bike reads bigger */
+@media (max-width: 767px) {
+    .bjm-intro-img { width: calc(100% + 2 * clamp(20px, 4vw, 60px)) !important; max-width: none !important; margin: 0 calc(-1 * clamp(20px, 4vw, 60px)) !important; }
+}
 .bjm-360-img {
     cursor: grab !important;
     -webkit-user-select: none !important;
