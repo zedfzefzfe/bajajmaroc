@@ -1,76 +1,89 @@
-/* Bajaj Maroc — floating "Essai gratuit" button (leads to the test-ride form).
-   Light glossy pill with the label on the left and a dark round arrow on the right;
-   the arrow turns Bajaj red on hover. The theme resets padding with !important,
-   so spacing here needs !important too. */
+/* Bajaj Maroc — floating "Réserver un essai" button (leads to the test-ride form).
+   Motorsport style: glossy near-black pill with an electric-blue edge, blue speed
+   lines on the left and a round blue arrow on the right. Lifts slightly on hover.
+   The theme resets padding with !important, so spacing here needs !important too. */
 
 .bj-ride {
   position: fixed !important;
-  right: 24px !important;
-  bottom: 24px !important;
+  right: max(28px, calc(env(safe-area-inset-right) + 14px)) !important;
+  bottom: max(28px, calc(env(safe-area-inset-bottom) + 14px)) !important;
   z-index: 990 !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 16px !important;
-  padding: 6px 6px 6px 24px !important;
+  gap: 10px !important;
+  padding: 4px 4px 4px 18px !important;
   border-radius: 999px !important;
-  background: linear-gradient(180deg, #f7f7f7 0%, #e4e4e4 100%) !important;
-  border: 1px solid rgba(255, 255, 255, .9) !important;
+  background: linear-gradient(180deg, #202020 0%, #050505 100%) !important;
+  border: 1px solid rgba(0, 132, 255, .85) !important;
   box-shadow:
-    0 10px 28px rgba(0, 0, 0, .22),
-    0 2px 6px rgba(0, 0, 0, .10),
-    inset 0 1px 0 rgba(255, 255, 255, .95),
-    inset 0 -1px 0 rgba(0, 0, 0, .06) !important;
-  color: #1c1c1e !important;
+    0 10px 26px rgba(0, 0, 0, .45),
+    0 0 14px rgba(0, 132, 255, .22),
+    inset 0 1px 0 rgba(255, 255, 255, .10) !important;
+  color: #fff !important;
   text-decoration: none !important;
   font-family: 'Inter', 'Lato', sans-serif !important;
   /* hidden until the visitor scrolls past the hero (ride-cta.js adds .bj-ride-in) */
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
-  transition: opacity .3s ease, transform .3s ease, visibility .3s, box-shadow .25s ease;
+  transition: opacity .25s ease, visibility .25s, transform .25s ease, box-shadow .25s ease;
 }
 .bj-ride.bj-ride-in { opacity: 1; visibility: visible; transform: none; }
-.bj-ride:hover,
-.bj-ride:focus-visible {
-  color: #1c1c1e !important;
+.bj-ride.bj-ride-in:hover,
+.bj-ride.bj-ride-in:focus-visible {
+  transform: translateY(-4px);
+  color: #fff !important;
   text-decoration: none !important;
   box-shadow:
-    0 14px 34px rgba(0, 0, 0, .26),
-    0 2px 6px rgba(0, 0, 0, .10),
-    inset 0 1px 0 rgba(255, 255, 255, .95),
-    inset 0 -1px 0 rgba(0, 0, 0, .06) !important;
+    0 14px 32px rgba(0, 0, 0, .55),
+    0 0 22px rgba(0, 132, 255, .38),
+    inset 0 1px 0 rgba(255, 255, 255, .10) !important;
 }
-.bj-ride:focus-visible { outline: 2px solid #E4002B !important; outline-offset: 3px !important; }
+.bj-ride:focus { outline: none !important; }
+.bj-ride:focus-visible { outline: 2px solid #1e90ff !important; outline-offset: 3px !important; }
+
+/* three angular speed lines */
+.bj-ride-lines { display: flex !important; flex: 0 0 auto !important; }
+.bj-ride-lines svg { width: 20px !important; height: 13px !important; fill: #1e90ff !important; display: block !important; }
 
 .bj-ride-label {
-  font-size: 17px !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.1px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .6px !important;
+  text-transform: uppercase !important;
   white-space: nowrap !important;
   line-height: 1 !important;
+  margin-right: 6px !important;
 }
+
 .bj-ride-go {
   flex: 0 0 auto !important;
-  width: 44px !important;
-  height: 44px !important;
+  width: 48px !important;
+  height: 48px !important;
   border-radius: 50% !important;
-  background: #1c1c1e !important;
+  background: linear-gradient(180deg, #168dff 0%, #0062df 100%) !important;
   color: #fff !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: background-color .25s ease !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25) !important;
 }
-.bj-ride-go svg { width: 18px !important; height: 18px !important; transition: transform .25s ease !important; }
-.bj-ride:hover .bj-ride-go,
-.bj-ride:focus-visible .bj-ride-go { background: #E4002B !important; }
-.bj-ride:hover .bj-ride-go svg { transform: translateX(2px) !important; }
+.bj-ride-go svg { width: 22px !important; height: 22px !important; transition: transform .25s ease !important; }
+.bj-ride:hover .bj-ride-go svg,
+.bj-ride:focus-visible .bj-ride-go svg { transform: translateX(2px) !important; }
 
 @media (max-width: 560px) {
-  .bj-ride { right: 14px !important; bottom: 14px !important; gap: 12px !important; padding: 5px 5px 5px 20px !important; }
-  .bj-ride-label { font-size: 15px !important; }
-  .bj-ride-go { width: 40px !important; height: 40px !important; }
+  .bj-ride {
+    right: max(14px, calc(env(safe-area-inset-right) + 8px)) !important;
+    bottom: max(14px, calc(env(safe-area-inset-bottom) + 8px)) !important;
+    gap: 8px !important;
+    padding: 4px 4px 4px 14px !important;
+  }
+  .bj-ride-go { width: 42px !important; height: 42px !important; }
+  .bj-ride-go svg { width: 20px !important; height: 20px !important; }
+  .bj-ride-label { font-size: 11.5px !important; margin-right: 4px !important; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bj-ride, .bj-ride-go, .bj-ride-go svg { transition: none !important; }
+  .bj-ride, .bj-ride-go svg { transition: none !important; }
+  .bj-ride.bj-ride-in:hover, .bj-ride.bj-ride-in:focus-visible { transform: none; }
 }
