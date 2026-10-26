@@ -680,6 +680,22 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
         .custom-cf7-form input.wpcf7-submit[type="submit"]:disabled { opacity: .7; cursor: wait; transform: none; }
         .submit-note { text-align: center; font-size: 12px; color: #888; margin-top: 10px !important; }
 
+        /* Confirmation screen shown in place of the fields after a successful send */
+        .tr-confirm { max-width: 400px; margin: 0 auto !important; text-align: center; padding: 28px 8px !important; }
+        .tr-confirm[hidden], .custom-cf7-form[hidden] { display: none !important; }
+        .tr-confirm-title { font-size: 28px; font-weight: 800; color: var(--primary-blue); margin-bottom: 12px !important; outline: none; }
+        .tr-confirm-text { font-size: 15px; line-height: 1.6; color: #444; margin-bottom: 26px !important; }
+        .tr-confirm-wa {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; min-height: 54px; padding: 14px 20px !important;
+            background-color: #25D366; color: #fff; border-radius: 6px;
+            font-size: 16px; font-weight: 700; text-decoration: none;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, .3);
+            transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+        }
+        .tr-confirm-wa:hover, .tr-confirm-wa:focus-visible { background-color: #1ebe5b; color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 211, 102, .38); }
+        .tr-confirm-wa:focus-visible { outline: 2px solid #128C7E; outline-offset: 3px; }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .test-ride-container {
@@ -734,6 +750,11 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 		<p class="submit-note">C’est gratuit et sans engagement.</p>
 	</div>
 </div><div class="wpcf7-response-output" aria-hidden="true"></div>
+<div class="tr-confirm" id="trConfirm" hidden>
+	<h2 class="tr-confirm-title" tabindex="-1">Merci ! 🎉</h2>
+	<p class="tr-confirm-text">Votre demande d'essai a bien été envoyée. Un membre de notre équipe vous contactera très prochainement pour organiser votre essai.</p>
+	<a class="tr-confirm-wa" id="trConfirmWa" href="https://wa.me/212632943921?text=Bonjour,%20je%20viens%20de%20r%C3%A9server%20un%20essai%20sur%20votre%20site%20Bajaj." target="_blank" rel="noopener">💬 Discuter sur WhatsApp</a>
+</div>
 <script>
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
 var wanted=new URLSearchParams(location.search).get('model'),modelSel=f.querySelector('select[name=model]');
@@ -746,9 +767,15 @@ f.addEventListener('submit',function(e){e.preventDefault();
 var out=f.querySelector('.wpcf7-response-output'),btn=f.querySelector('.wpcf7-submit');if(btn)btn.disabled=true;
 emailjs.sendForm("service_8i4jue1","template_rpnvap9",f)
 .then(function(){if(window.fbq)fbq('track','Lead');f.reset();
-if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#0a7d2c;margin-top:12px;';out.textContent='Merci ! Votre demande a bien \u00e9t\u00e9 envoy\u00e9e.';}})
+/* Swap the form fields for the confirmation screen */
+var fields=f.querySelector('.custom-cf7-form'),done=document.getElementById('trConfirm');
+if(out){out.setAttribute('aria-hidden','true');out.style.cssText='';out.textContent='';}
+if(fields&&done){fields.hidden=true;done.hidden=false;var t=done.querySelector('.tr-confirm-title');if(t){t.focus({preventScroll:true});}done.scrollIntoView({behavior:'smooth',block:'center'});}})
 .catch(function(){if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#c00;margin-top:12px;';out.textContent="Une erreur s'est produite. R\u00e9essayez ou contactez-nous sur WhatsApp.";}})
-.finally(function(){if(btn)btn.disabled=false;});});})();
+.finally(function(){if(btn)btn.disabled=false;});});
+var wa=document.getElementById('trConfirmWa');
+if(wa){wa.addEventListener('click',function(){if(window.fbq)fbq('track','Contact');});}
+})();
 </script>
 </form>
 </div>
