@@ -6,14 +6,14 @@
 
 .bj-ride {
   position: fixed !important;
-  right: max(40px, calc(env(safe-area-inset-right) + 16px)) !important;
-  bottom: max(65px, calc(env(safe-area-inset-bottom) + 16px)) !important;
+  right: max(28px, calc(env(safe-area-inset-right) + 16px)) !important;
+  bottom: max(28px, calc(env(safe-area-inset-bottom) + 16px)) !important;
   z-index: 990 !important;
   display: flex !important;
   align-items: center !important;
-  width: 350px !important;
-  height: 74px !important;
-  padding: 0 1px 0 26px !important;
+  width: 264px !important;
+  height: 58px !important;
+  padding: 0 1px 0 18px !important;
   border-radius: 999px !important;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, .07) 0%, rgba(255, 255, 255, 0) 45%),
@@ -21,9 +21,9 @@
   border: 1.5px solid #0a84ff !important;
   box-shadow:
     0 0 0 1px rgba(0, 132, 255, .30),
-    0 0 14px rgba(0, 132, 255, .60),
-    0 0 36px rgba(0, 132, 255, .45),
-    0 0 70px rgba(0, 132, 255, .30),
+    0 0 10px rgba(0, 132, 255, .60),
+    0 0 26px rgba(0, 132, 255, .45),
+    0 0 50px rgba(0, 132, 255, .28),
     0 14px 30px rgba(0, 0, 0, .55),
     inset 0 1px 0 rgba(120, 190, 255, .35),
     inset 0 -1px 0 rgba(0, 132, 255, .35),
@@ -45,9 +45,9 @@
   text-decoration: none !important;
   box-shadow:
     0 0 0 1px rgba(0, 132, 255, .40),
-    0 0 18px rgba(0, 132, 255, .75),
-    0 0 46px rgba(0, 132, 255, .55),
-    0 0 86px rgba(0, 132, 255, .35),
+    0 0 14px rgba(0, 132, 255, .75),
+    0 0 34px rgba(0, 132, 255, .55),
+    0 0 64px rgba(0, 132, 255, .32),
     0 18px 36px rgba(0, 0, 0, .6),
     inset 0 1px 0 rgba(120, 190, 255, .45),
     inset 0 -1px 0 rgba(0, 132, 255, .45),
@@ -75,8 +75,8 @@
 /* three angular speed lines */
 .bj-ride-lines { display: flex !important; flex: 0 0 auto !important; }
 .bj-ride-lines svg {
-  width: 44px !important;
-  height: 27px !important;
+  width: 30px !important;
+  height: 19px !important;
   fill: #1e90ff !important;
   display: block !important;
   filter: drop-shadow(0 0 4px rgba(30, 144, 255, .6)) !important;
@@ -86,7 +86,7 @@
 .bj-ride-label {
   flex: 1 1 auto !important;
   text-align: center !important;
-  font-size: 17px !important;
+  font-size: 13px !important;
   font-weight: 800 !important;
   letter-spacing: .6px !important;
   text-transform: uppercase !important;
@@ -97,14 +97,14 @@
 
 .bj-ride-go {
   flex: 0 0 auto !important;
-  width: 70px !important;
-  height: 70px !important;
+  width: 54px !important;
+  height: 54px !important;
   border-radius: 50% !important;
   background: linear-gradient(180deg, #168dff 0%, #0062df 100%) !important;
   border: 1.5px solid rgba(140, 205, 255, .95) !important;
   box-shadow:
-    0 0 14px rgba(22, 141, 255, .9),
-    0 0 30px rgba(22, 141, 255, .6),
+    0 0 10px rgba(22, 141, 255, .9),
+    0 0 22px rgba(22, 141, 255, .6),
     inset 0 2px 0 rgba(255, 255, 255, .30),
     inset 0 -6px 12px rgba(0, 40, 140, .35) !important;
   color: #fff !important;
@@ -112,18 +112,10 @@
   align-items: center !important;
   justify-content: center !important;
 }
-.bj-ride-go svg { width: 36px !important; height: 36px !important; transition: transform .25s ease !important; }
+.bj-ride-go svg { width: 28px !important; height: 28px !important; transition: transform .25s ease !important; }
 .bj-ride:hover .bj-ride-go svg,
 .bj-ride:focus-visible .bj-ride-go svg { transform: translateX(3px) !important; }
 
-/* tablets / small laptops: same look, a little smaller */
-@media (max-width: 900px) {
-  .bj-ride { width: 300px !important; height: 64px !important; padding-left: 22px !important; right: max(24px, calc(env(safe-area-inset-right) + 12px)) !important; bottom: max(32px, calc(env(safe-area-inset-bottom) + 12px)) !important; }
-  .bj-ride-go { width: 60px !important; height: 60px !important; }
-  .bj-ride-go svg { width: 30px !important; height: 30px !important; }
-  .bj-ride-label { font-size: 15px !important; }
-  .bj-ride-lines svg { width: 34px !important; height: 22px !important; }
-}
 /* phones */
 @media (max-width: 560px) {
   .bj-ride {
@@ -137,6 +129,25 @@
   .bj-ride-go svg { width: 26px !important; height: 26px !important; }
   .bj-ride-label { font-size: 12.5px !important; letter-spacing: .6px !important; padding: 0 6px !important; }
   .bj-ride-lines svg { width: 26px !important; height: 17px !important; }
+  /* phones keep the glow they had before the desktop size was reduced */
+  .bj-ride {
+    box-shadow:
+      0 0 0 1px rgba(0, 132, 255, .30),
+      0 0 14px rgba(0, 132, 255, .60),
+      0 0 36px rgba(0, 132, 255, .45),
+      0 0 70px rgba(0, 132, 255, .30),
+      0 14px 30px rgba(0, 0, 0, .55),
+      inset 0 1px 0 rgba(120, 190, 255, .35),
+      inset 0 -1px 0 rgba(0, 132, 255, .35),
+      inset 0 0 12px rgba(0, 132, 255, .12) !important;
+  }
+  .bj-ride-go {
+    box-shadow:
+      0 0 14px rgba(22, 141, 255, .9),
+      0 0 30px rgba(22, 141, 255, .6),
+      inset 0 2px 0 rgba(255, 255, 255, .30),
+      inset 0 -6px 12px rgba(0, 40, 140, .35) !important;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .bj-ride, .bj-ride-go svg { transition: none !important; }
