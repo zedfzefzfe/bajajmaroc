@@ -735,8 +735,8 @@ html { scroll-behavior: smooth; }
 .bjm-intro-text  { width: 100% !important; }
 .bjm-intro-media { width: 100% !important; text-align: center !important; }
 
-/* Phones / tablets (stacked layout): the bike comes right after the name and price;
-   description, colours and buttons follow in their usual order. The text block's
+/* Phones / tablets (stacked layout): the bike (with its colour picker) comes right
+   after the name and price; description and buttons follow. The text block's
    children join the column so the bike can sit between them. */
 @media (max-width: 1023px) {
     .bjm-intro { gap: 0 !important; }
@@ -744,17 +744,19 @@ html { scroll-behavior: smooth; }
     .bjm-intro-text > * { order: 1; }
     .bjm-intro-media { order: 2; margin: 8px 0 28px !important; }
     .bjm-intro-text > .bjm-text,
-    .bjm-intro-text > .bjm-colors-label,
-    .bjm-intro-text > .bjm-colors-row,
     .bjm-intro-text > .bjm-btn-row { order: 3; }
 }
 
-.bjm-price-line { font-size: clamp(15px, 2vw, 18px) !important; color: #333 !important; margin-bottom: 4px !important; }
-.bjm-price-highlight { color: #015cac !important; font-weight: 900 !important; font-size: 1.15em !important; }
+.bjm-price-line { font-size: clamp(16px, 2vw, 18px) !important; color: #333 !important; margin-bottom: 4px !important; }
+.bjm-price-highlight { color: #015cac !important; font-weight: 900 !important; font-size: 1.6em !important; letter-spacing: -0.3px !important; }
 .bjm-price-note { font-size: 12px !important; color: #888 !important; margin-bottom: 24px !important; }
 
 .bjm-colors-label { display: block !important; font-weight: 700 !important; font-size: 14px !important; color: #222 !important; margin-bottom: 12px !important; }
 .bjm-colors-row { display: flex !important; gap: 12px !important; margin-bottom: 30px !important; }
+/* colour picker sits under the bike picture, centred */
+.bjm-intro-media .bjm-colors { margin-top: 18px !important; }
+.bjm-intro-media .bjm-colors-label { text-align: center !important; }
+.bjm-intro-media .bjm-colors-row { justify-content: center !important; margin-bottom: 0 !important; }
 .bjm-color-dot {
     width: 30px !important; height: 30px !important;
     border-radius: 50% !important;
@@ -1171,7 +1173,21 @@ html { scroll-behavior: smooth; }
                 <p class="bjm-price-note">TTC. 3 ans de garantie inclus.</p>
                                 <p class="bjm-text">La seule Pulsar entièrement carénée. Conçue pour la vitesse maîtrisée, la RS200 associe un carénage aérodynamique travaillé à un moteur 199,4 cc refroidi par liquide développant 24,5 PS. ABS double canal à 3 modes, embrayage Assist &amp; Slipper et écran LCD couleur connecté : la RS200 pousse le caractère Pulsar à son expression la plus radicale.</p>
 
-                                <span class="bjm-colors-label">Choisissez votre couleur&nbsp;:</span>
+                
+                <div class="bjm-btn-row">
+                    <a href="/test-ride/" class="bjm-btn-solid">Réserver un essai</a>
+                    <a href="index.html#specs" class="bjm-btn-outline">Voir les caractéristiques</a>
+                </div>
+            </div>
+            <div class="bjm-intro-media bjm-anim-right">
+                                <img id="bjmProductImg"
+                     src="../../wp-content/themes/bajaj-morocoo/images/rs200-360/black-01.jpg"
+                     alt="Pulsar RS200 — vue 360°"
+                     class="bjm-intro-img bjm-360-img"
+                     draggable="false">
+                <div class="bjm-360-badge"><i class="fa-solid fa-arrows-left-right"></i> Vue 360°</div>
+                <div class="bjm-colors">
+                <span class="bjm-colors-label">Choisissez votre couleur&nbsp;:</span>
                 <div class="bjm-colors-row">
                                             <button type="button"
                             class="bjm-color-dot bjm-color-active"
@@ -1189,19 +1205,7 @@ html { scroll-behavior: smooth; }
                             data-color-id="red"
                             aria-label="Rouge"></button>
                                     </div>
-                
-                <div class="bjm-btn-row">
-                    <a href="/test-ride/" class="bjm-btn-solid">Réserver un essai</a>
-                    <a href="index.html#specs" class="bjm-btn-outline">Voir les caractéristiques</a>
                 </div>
-            </div>
-            <div class="bjm-intro-media bjm-anim-right">
-                                <img id="bjmProductImg"
-                     src="../../wp-content/themes/bajaj-morocoo/images/rs200-360/black-01.jpg"
-                     alt="Pulsar RS200 — vue 360°"
-                     class="bjm-intro-img bjm-360-img"
-                     draggable="false">
-                <div class="bjm-360-badge"><i class="fa-solid fa-arrows-left-right"></i> Vue 360°</div>
                             </div>
         </div>
     </div>
