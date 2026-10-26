@@ -28,8 +28,6 @@ t: {
 "Mobile navigation": { fr: "Navigation mobile" },
 "Verified Seal": { fr: "Sceau vérifié" },
 
-/* ── Floating test-ride button ── */
-"Essai gratuit": { en: "Free test ride" },
 
 /* ── Shared model-page content ── */
 "À partir de :": { en: "From:" },
