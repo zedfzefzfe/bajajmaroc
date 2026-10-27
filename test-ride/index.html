@@ -222,6 +222,7 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 <link rel="stylesheet" href="/assets/i18n/i18n.css">
 <script src="/assets/i18n/dict.js" defer></script>
 <script src="/assets/i18n/i18n.js" defer></script>
+<script src="/assets/crm/crm-lead.js" defer></script>
 </head>
 <body class="wp-singular page-template page-template-page-test-ride page-template-page-test-ride-php page page-id-10 wp-embed-responsive wp-theme-generatepress wp-child-theme-bajaj-morocoo right-sidebar nav-float-right separate-containers header-aligned-left dropdown-hover">
     
@@ -771,6 +772,8 @@ emailjs.sendForm("service_8i4jue1","template_rpnvap9",f)
 /* Values just entered (read before the form is reset) */
 var val=function(n){var el=f.querySelector('[name='+n+']');return ((el&&el.value)||'').trim();};
 var firstName=val('name'),lastName=val('surname'),phone=val('telephone'),model=val('model'),payment=val('payment');
+/* Save the request in the CRM (never blocks the confirmation screen) */
+try{if(window.bjSaveLead)bjSaveLead({nom:(firstName+' '+lastName).trim(),telephone:phone,modele:model,paiement:payment});}catch(err){}
 /* WhatsApp message built from those values; empty fields are simply left out */
 var fullName=(firstName+' '+lastName).trim(),msg='Bonjour'+(fullName?', je suis '+fullName+'.':'.');
 if(model)msg+=" Je suis intéressé(e) par la "+model+" que j'ai choisie sur votre site.";
