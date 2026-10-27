@@ -4,8 +4,8 @@
 (function () {
   'use strict';
   // Supabase project URL + publishable ("anon") key. Never the secret / service_role key.
-  var SUPABASE_URL = 'PASTE_SUPABASE_URL';
-  var SUPABASE_KEY = 'PASTE_ANON_KEY';
+  var SUPABASE_URL = 'https://atmhogszqcskjedmvhdm.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_Ractp8htLqSb0ESxsCs2Og_KTEi7PKz';
 
   window.bjSaveLead = function (lead) {
     try {
