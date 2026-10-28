@@ -682,6 +682,8 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
         .submit-note { text-align: center; font-size: 12px; color: #888; margin-top: 10px !important; }
 
         /* Confirmation screen shown in place of the fields after a successful send */
+        .tr-situation[hidden] { display: none !important; }
+        .tr-optional-label { display: block; margin: 0 0 6px 2px; font-size: 13px; font-weight: 600; color: #555; }
         .tr-confirm { max-width: 400px; margin: 0 auto !important; text-align: center; padding: 28px 8px !important; }
         .tr-confirm[hidden], .custom-cf7-form[hidden] { display: none !important; }
         .tr-confirm-title { font-size: 28px; font-weight: 800; color: var(--primary-blue); margin-bottom: 12px !important; outline: none; }
@@ -766,6 +768,11 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 		<p><span class="wpcf7-form-control-wrap" data-name="payment"><select class="wpcf7-form-control wpcf7-select form-control" aria-label="Mode de paiement" name="payment"><option value="">Comment souhaitez-vous l’acheter ?</option><option value="Au comptant">Au comptant</option><option value="Crédit à 0 %">Crédit à 0 %</option></select></span>
 		</p>
 	</div>
+	<div class="form-group tr-situation" id="trSituation" hidden>
+		<label class="tr-optional-label" for="trSituationSelect">Situation professionnelle (optionnel)</label>
+		<p><span class="wpcf7-form-control-wrap" data-name="situation_pro"><select class="wpcf7-form-control wpcf7-select form-control" id="trSituationSelect" name="situation_pro"><option value="">— Sélectionnez —</option><option value="Salarié CDI (plus d’1 an)">Salarié CDI (plus d’1 an)</option><option value="Salarié CDD">Salarié CDD</option><option value="Auto-entrepreneur">Auto-entrepreneur</option><option value="Chef d’entreprise / Société">Chef d’entreprise / Société</option><option value="Retraité">Retraité</option><option value="Secteur informel">Secteur informel</option><option value="Autre">Autre</option></select></span>
+		</p>
+	</div>
 	<div class="form-group">
 		<p><input class="wpcf7-form-control wpcf7-submit has-spinner btn-submit" type="submit" value="Réserver mon essai →" />
 		</p>
@@ -783,6 +790,13 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
 var wanted=new URLSearchParams(location.search).get('model'),modelSel=f.querySelector('select[name=model]');
 if(wanted&&modelSel){for(var i=0;i<modelSel.options.length;i++){if(modelSel.options[i].value===wanted){modelSel.selectedIndex=i;break;}}}
+/* Optional "Situation professionnelle" field: shown only when the purchase method is a credit
+   option (value contains "Crédit"); hidden and emptied otherwise. Never required. */
+var paySel=f.querySelector('select[name=payment]'),sitBox=document.getElementById('trSituation'),sitSel=document.getElementById('trSituationSelect');
+function syncSituation(){if(!paySel||!sitBox||!sitSel)return;var credit=/cr[ée]dit/i.test(paySel.value||'');sitBox.hidden=!credit;if(!credit)sitSel.value='';}
+if(paySel){paySel.addEventListener('change',syncSituation);}
+f.addEventListener('reset',function(){setTimeout(syncSituation,0);});
+syncSituation();
 /* Put the cursor in the first field to fill so visitors can start typing right away
    (runs once the page is shown; on iPhone the keyboard still waits for a tap). */
 function focusFirst(){var el=f.querySelector('input[name=name]');if(el&&!el.value&&document.activeElement===document.body){el.focus();}}
@@ -793,9 +807,9 @@ emailjs.sendForm("service_8i4jue1","template_rpnvap9",f)
 .then(function(){if(window.fbq)fbq('track','Lead');
 /* Values just entered (read before the form is reset) */
 var val=function(n){var el=f.querySelector('[name='+n+']');return ((el&&el.value)||'').trim();};
-var firstName=val('name'),lastName=val('surname'),phone=val('telephone'),model=val('model'),payment=val('payment');
+var firstName=val('name'),lastName=val('surname'),phone=val('telephone'),model=val('model'),payment=val('payment'),situation=val('situation_pro');
 /* Save the request in the CRM (never blocks the confirmation screen) */
-try{if(window.bjSaveLead)bjSaveLead({nom:(firstName+' '+lastName).trim(),telephone:phone,modele:model,paiement:payment});}catch(err){}
+try{if(window.bjSaveLead)bjSaveLead({nom:(firstName+' '+lastName).trim(),telephone:phone,modele:model,paiement:payment,situation_pro:situation});}catch(err){}
 /* WhatsApp message built from those values; empty fields are simply left out */
 var fullName=(firstName+' '+lastName).trim(),msg='Bonjour'+(fullName?', je suis '+fullName+'.':'.');
 if(model)msg+=" Je suis intéressé(e) par la "+model+" que j'ai choisie sur votre site.";

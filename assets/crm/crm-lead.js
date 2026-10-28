@@ -10,24 +10,37 @@
   window.bjSaveLead = function (lead) {
     try {
       if (SUPABASE_URL.indexOf('PASTE_') === 0 || !window.fetch) return;
-      fetch(SUPABASE_URL + '/rest/v1/leads', {
-        method: 'POST',
-        keepalive: true,
-        headers: {
-          apikey: SUPABASE_KEY,
-          'Content-Type': 'application/json',
-          Prefer: 'return=minimal'
-        },
-        body: JSON.stringify({
-          nom: lead.nom,
-          telephone: lead.telephone,
-          modele: lead.modele || null,
-          paiement: lead.paiement || null,
-          source: 'landing'
-        })
-      }).then(function (r) {
-        if (!r.ok) r.text().then(function (t) { console.warn('CRM', r.status, t); });
-      }, function (err) { console.warn('CRM', err); });
+      var row = {
+        nom: lead.nom,
+        telephone: lead.telephone,
+        modele: lead.modele || null,
+        paiement: lead.paiement || null,
+        situation_pro: lead.situation_pro || null,
+        source: 'landing'
+      };
+      var send = function (body) {
+        return fetch(SUPABASE_URL + '/rest/v1/leads', {
+          method: 'POST',
+          keepalive: true,
+          headers: {
+            apikey: SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            Prefer: 'return=minimal'
+          },
+          body: JSON.stringify(body)
+        });
+      };
+      send(row).then(function (r) {
+        if (r.ok) return;
+        return r.text().then(function (t) {
+          // Database without the situation_pro column yet: save the lead anyway, without it.
+          if (/situation_pro/.test(t)) {
+            delete row.situation_pro;
+            return send(row).then(function (r2) { if (!r2.ok) r2.text().then(function (t2) { console.warn('CRM', r2.status, t2); }); });
+          }
+          console.warn('CRM', r.status, t);
+        });
+      }).catch(function (err) { console.warn('CRM', err); });
     } catch (err) { console.warn('CRM', err); }
   };
 })();
