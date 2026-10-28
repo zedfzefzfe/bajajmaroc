@@ -697,6 +697,26 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
         .tr-confirm-wa:hover, .tr-confirm-wa:focus-visible { background-color: #1ebe5b; color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37, 211, 102, .38); }
         .tr-confirm-wa:focus-visible { outline: 2px solid #128C7E; outline-offset: 3px; }
         .tr-confirm-wa .tr-wa-icon { width: 22px; height: 22px; fill: #fff; flex: 0 0 auto; }
+        /* Save-contact button (primary) — downloads the Bajaj Maroc vCard */
+        .tr-confirm-save {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; min-height: 58px; padding: 15px 20px !important; margin: 0 !important;
+            background-color: var(--primary-blue, #0056b3); color: #fff !important; border: 0; border-radius: 10px;
+            font: inherit; font-size: 17px; font-weight: 800; letter-spacing: .2px; line-height: 1.2;
+            text-decoration: none !important; cursor: pointer; -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 8px 22px rgba(0, 86, 179, .32);
+            transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+        }
+        .tr-confirm-save:hover, .tr-confirm-save:focus-visible { background-color: var(--button-hover-blue, #004494); color: #fff; transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0, 86, 179, .4); }
+        .tr-confirm-save:active { transform: translateY(0); }
+        .tr-confirm-save:focus-visible { outline: 2px solid #003675; outline-offset: 3px; }
+        .tr-confirm-save .tr-save-icon { width: 24px; height: 24px; flex: 0 0 auto; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .tr-confirm-save-note { margin: 8px 0 18px !important; font-size: 13px; color: #6b7280; }
+        @media (max-width: 420px) { .tr-confirm-save { font-size: 15px; gap: 8px; padding: 15px 14px !important; letter-spacing: 0; } .tr-confirm-save .tr-save-icon { width: 22px; height: 22px; } }
+        /* WhatsApp becomes the secondary action below the save-contact button */
+        .tr-confirm-wa.tr-confirm-wa--secondary { background-color: #fff; color: #128C7E; border: 2px solid #25D366; box-shadow: none; min-height: 50px; font-size: 15px; }
+        .tr-confirm-wa.tr-confirm-wa--secondary .tr-wa-icon { fill: #25D366; }
+        .tr-confirm-wa.tr-confirm-wa--secondary:hover, .tr-confirm-wa.tr-confirm-wa--secondary:focus-visible { background-color: #f0fdf4; color: #0e7a6e; box-shadow: none; }
 
         /* Responsive Design */
         @media (max-width: 992px) {
@@ -753,9 +773,11 @@ src="https://www.facebook.com/tr?id=1438254284514631&ev=PageView&noscript=1"/></
 	</div>
 </div><div class="wpcf7-response-output" aria-hidden="true"></div>
 <div class="tr-confirm" id="trConfirm" hidden>
-	<h2 class="tr-confirm-title" tabindex="-1">Merci !</h2>
-	<p class="tr-confirm-text">Votre demande a bien été envoyée. Un membre de notre équipe vous contactera très prochainement.</p>
-	<a class="tr-confirm-wa" id="trConfirmWa" href="https://wa.me/212632943921?text=Bonjour,%20je%20viens%20de%20r%C3%A9server%20un%20essai%20sur%20votre%20site%20Bajaj." target="_blank" rel="noopener"><svg class="tr-wa-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Discuter sur WhatsApp</span></a>
+	<h2 class="tr-confirm-title" tabindex="-1">Merci ! Votre demande est confirmée.</h2>
+	<p class="tr-confirm-text">Notre équipe vous appellera dans les prochaines minutes pour organiser votre essai. Enregistrez notre numéro pour reconnaître notre appel.</p>
+	<a class="tr-confirm-save" id="trSaveContact" href="/assets/contact/Bajaj-Maroc.vcf" download="Bajaj-Maroc.vcf"><svg class="tr-save-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M19 8v6M16 11h6"/></svg><span>Enregistrer le contact Bajaj Maroc</span></a>
+	<p class="tr-confirm-save-note">Bajaj Maroc · +212 6 32 94 39 21</p>
+	<a class="tr-confirm-wa tr-confirm-wa--secondary" id="trConfirmWa" href="https://wa.me/212632943921?text=Bonjour,%20je%20viens%20de%20r%C3%A9server%20un%20essai%20sur%20votre%20site%20Bajaj." target="_blank" rel="noopener"><svg class="tr-wa-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Discuter sur WhatsApp</span></a>
 </div>
 <script>
 (function(){var f=document.querySelector('form.wpcf7-form');if(!f)return;
@@ -785,13 +807,27 @@ f.reset();
 var fields=f.querySelector('.custom-cf7-form'),done=document.getElementById('trConfirm');
 if(out){out.setAttribute('aria-hidden','true');out.style.cssText='';out.textContent='';}
 if(fields&&done){fields.hidden=true;done.hidden=false;var t=done.querySelector('.tr-confirm-title');if(t){
-/* Greet the visitor by the first name they just typed */
-if(firstName){var en=window.bjI18n&&window.bjI18n.lang==='en';t.textContent=en?'Thank you, '+firstName+'!':'Merci '+firstName+' !';}
 t.focus({preventScroll:true});}done.scrollIntoView({behavior:'smooth',block:'center'});}})
 .catch(function(){if(out){out.setAttribute('aria-hidden','false');out.style.cssText='display:block;color:#c00;margin-top:12px;';out.textContent="Une erreur s'est produite. R\u00e9essayez ou contactez-nous sur WhatsApp.";}})
 .finally(function(){if(btn)btn.disabled=false;});});
 var wa=document.getElementById('trConfirmWa');
 if(wa){wa.addEventListener('click',function(){if(window.fbq)fbq('track','Contact');});}
+/* "Enregistrer le contact": download the Bajaj Maroc vCard built as a Blob, so on mobile
+   the .vcf opens the native "add contact" screen and the team's calls show "Bajaj Maroc".
+   Facebook/Instagram in-app browsers cannot save Blob downloads: there the link simply
+   opens the same card from /assets/contact/Bajaj-Maroc.vcf (its href). */
+var save=document.getElementById('trSaveContact');
+if(save){save.addEventListener('click',function(e){
+if(/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent||''))return;
+try{
+var vcard=['BEGIN:VCARD','VERSION:3.0','FN:Bajaj Maroc','N:Maroc;Bajaj;;;','ORG:Bajaj Maroc','TEL;TYPE=CELL,VOICE:+212632943921','EMAIL;TYPE=INTERNET:zakaria@bajajmorocco.com','END:VCARD'].join('\r\n')+'\r\n';
+var url=URL.createObjectURL(new Blob([vcard],{type:'text/vcard;charset=utf-8'}));
+var a=document.createElement('a');a.href=url;a.download='Bajaj-Maroc.vcf';a.style.display='none';
+document.body.appendChild(a);a.click();document.body.removeChild(a);
+setTimeout(function(){URL.revokeObjectURL(url);},4000);
+e.preventDefault();
+}catch(err){/* keep the default link to the .vcf file */}
+});}
 })();
 </script>
 </form>

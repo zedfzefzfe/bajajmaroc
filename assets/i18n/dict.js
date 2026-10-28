@@ -406,6 +406,9 @@ t: {
 "Merci !": { en: "Thank you!" },
 "Votre demande a bien été envoyée. Un membre de notre équipe vous contactera très prochainement.": { en: "Your request has been sent. A member of our team will contact you very soon." },
 "Une erreur s'est produite. Réessayez ou contactez-nous sur WhatsApp.": { en: "Something went wrong. Please try again or contact us on WhatsApp." },
+"Merci ! Votre demande est confirmée.": { en: "Thank you! Your request is confirmed." },
+"Notre équipe vous appellera dans les prochaines minutes pour organiser votre essai. Enregistrez notre numéro pour reconnaître notre appel.": { en: "Our team will call you in the next few minutes to arrange your test ride. Save our number so you recognise our call." },
+"Enregistrer le contact Bajaj Maroc": { en: "Save the Bajaj Maroc contact" },
 "Test Ride – Bajaj Morocco": { fr: "Essai – Bajaj Maroc" },
 "Test Ride — moto Bajaj disponible au Maroc. Bajaj Maroc (Bajaj Morocco), concessionnaires à Casablanca.": { en: "Test Ride — Bajaj motorcycles available in Morocco. Bajaj Morocco, dealerships in Casablanca." }
 },
