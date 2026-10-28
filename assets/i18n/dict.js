@@ -403,7 +403,7 @@ t: {
 "Mode de paiement": { en: "Payment method" },
 "Au comptant": { en: "Cash" },
 "Crédit à 0 %": { en: "0% financing" },
-"Situation professionnelle (optionnel)": { en: "Employment status (optional)" },
+"Situation professionnelle": { en: "Employment status" },
 "— Sélectionnez —": { en: "— Select —" },
 "Salarié CDI (plus d’1 an)": { en: "Permanent employee (over 1 year)" },
 "Salarié CDD": { en: "Fixed-term employee" },
