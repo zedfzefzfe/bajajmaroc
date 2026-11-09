@@ -1,4 +1,4 @@
-/* Bajaj Maroc — FR / EN language switcher.
+/* Bajaj Maroc — FR / EN / AR language switcher.
    The pages are written in French (with a few English labels). On load, every
    text node, a few attributes (placeholder, alt, aria-label, title, button
    values), the <title> and the meta description are looked up in the
@@ -6,16 +6,28 @@
    by page scripts (form messages, counters, sliders) is caught by a
    MutationObserver. Changing language stores the choice and reloads the page,
    so translation always starts from the original markup.
-   The <head> snippet on every page sets <html lang> before anything renders. */
+   The <head> snippet on every page sets <html lang> before anything renders.
+   No choice stored yet -> the phone / browser language is used (ar, en, fr; else fr).
+   Arabic: each translated text is wrapped in <span class="bj-ar" dir="rtl"> so it reads
+   right-to-left, while every block keeps the position and alignment of the design. */
 (function () {
   'use strict';
 
-  var LANGS = ['fr', 'en'];
-  var LABELS = { fr: 'Français', en: 'English' };
+  var LANGS = ['fr', 'en', 'ar'];
+  var LABELS = { fr: 'Français', en: 'English', ar: 'العربية' };
   var KEY = 'bj-lang';
 
+  // Language chosen in the menu, else the phone / browser language, else French.
+  // (Same rule as the <head> snippet on every page.)
   function stored() {
     try { var v = localStorage.getItem(KEY); if (LANGS.indexOf(v) > -1) return v; } catch (e) {}
+    try {
+      var n = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+      for (var i = 0; i < n.length; i++) {
+        var c = String(n[i] || '').slice(0, 2).toLowerCase();
+        if (LANGS.indexOf(c) > -1) return c;
+      }
+    } catch (e) {}
     return 'fr';
   }
   var lang = stored();
@@ -36,6 +48,21 @@
 
   var written = new WeakMap(); // node -> value we wrote, so our own writes are not re-translated
 
+  // Arabic: wrap the translated text in a right-to-left span. The surrounding block keeps
+  // its own layout and alignment (nothing is mirrored). <option> text cannot hold a span:
+  // a right-to-left mark keeps its punctuation (e.g. "؟") on the correct side instead.
+  var RLM = '\u200F';
+  function wrapAr(node) {
+    var p = node.parentNode;
+    if (!p || p.nodeType !== 1) return;
+    if (p.classList.contains('bj-ar')) return;
+    var s = document.createElement('span');
+    s.className = 'bj-ar';
+    s.setAttribute('dir', 'rtl');
+    p.insertBefore(s, node);
+    s.appendChild(node);
+  }
+
   function translateText(node) {
     var v = node.nodeValue;
     if (!v || written.get(node) === v) return;
@@ -47,8 +74,10 @@
     if (t == null) return;
     var lead = /^\s/.test(v) ? ' ' : '', trail = /\s$/.test(v) ? ' ' : '';
     var nv = lead + t + trail;
+    if (lang === 'ar' && /^(OPTION|TITLE)$/.test(p.nodeName)) nv += RLM;
     written.set(node, nv);
     node.nodeValue = nv;
+    if (lang === 'ar' && !/^(OPTION|TITLE)$/.test(p.nodeName)) wrapAr(node);
   }
 
   var ATTRS = ['placeholder', 'alt', 'aria-label', 'title'];
@@ -92,7 +121,7 @@
       seen.push(el);
       var e = D.h[blockKey(el)];
       if (e && e[lang] != null) {
-        el.innerHTML = e[lang];
+        el.innerHTML = lang === 'ar' ? '<span class="bj-ar" dir="rtl">' + e[lang] + '</span>' : e[lang];
         var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
         while ((n = w.nextNode())) written.set(n, n.nodeValue);
       }
@@ -129,7 +158,7 @@
     var box = document.getElementById('bj-lang');
     if (!box) return;
     var items = LANGS.map(function (l) {
-      return '<li><button type="button" role="menuitemradio" aria-checked="' + (l === lang) + '" data-lang="' + l + '" lang="' + l + '">' + LABELS[l] + '</button></li>';
+      return '<li><button type="button" role="menuitemradio" aria-checked="' + (l === lang) + '" data-lang="' + l + '" lang="' + l + '"' + (l === 'ar' ? ' dir="rtl"' : '') + '>' + LABELS[l] + '</button></li>';
     }).join('');
     box.innerHTML =
       '<button type="button" class="bj-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="' + LABELS[lang] + '">' +
@@ -150,6 +179,10 @@
   }
 
   function start() {
+    if (lang === 'ar') {
+      var f = document.querySelectorAll('input[type=text], textarea');
+      for (var i = 0; i < f.length; i++) if (!f[i].hasAttribute('dir')) f[i].setAttribute('dir', 'auto');
+    }
     buildSwitcher();
     translateHead();
     translateTree(document.body);
