@@ -1,4 +1,4 @@
-/* Bajaj Maroc — language switcher (FR / EN).
+/* Bajaj Maroc — language switcher (FR / EN / AR).
    The theme resets margin/padding on every element with !important, so the
    rules here need !important too. */
 
@@ -73,3 +73,20 @@ html.bj-i18n-pending body { visibility: hidden !important; }
   #bj-lang.bj-lang-edge { margin-right: 0 !important; }
   #bj-lang .bj-lang-btn { font-size: 13px !important; padding: 8px 4px !important; }
 }
+
+/* Arabic: translated text reads right-to-left (dir="rtl" on the span); the page layout
+   is not mirrored. Arabic letters must stay joined, so no letter-spacing on Arabic text. */
+.bj-ar {
+  /* The wrapper must look exactly like its parent, whatever the theme does with spans. */
+  display: inline !important; position: static !important; float: none !important;
+  margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important;
+  width: auto !important; height: auto !important; transform: none !important; opacity: 1 !important;
+  animation: none !important; transition: none !important;
+  color: inherit !important; font-size: inherit !important; font-weight: inherit !important;
+  font-style: inherit !important; line-height: inherit !important; text-transform: inherit !important;
+  text-decoration: inherit !important; text-shadow: inherit !important; white-space: inherit !important;
+  letter-spacing: 0 !important;
+  word-spacing: normal !important;
+  font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, 'Geeza Pro', 'Arial', sans-serif !important;
+}
+#bj-lang .bj-lang-menu button[lang="ar"] { font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, 'Geeza Pro', sans-serif !important; text-align: right !important; }
