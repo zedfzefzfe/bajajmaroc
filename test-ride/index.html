@@ -5,11 +5,16 @@
     <!-- Language (FR / EN): set lang before the page renders; see /assets/i18n/ -->
     <script>(function(){var L=['fr','en','ar'],l=null;try{l=localStorage.getItem('bj-lang')}catch(e){}if(L.indexOf(l)<0){l='fr';try{var n=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||''];for(var i=0;i<n.length;i++){var c=String(n[i]||'').slice(0,2).toLowerCase();if(L.indexOf(c)>-1){l=c;break}}}catch(e){}}var h=document.documentElement;h.lang=l;h.className+=' bj-i18n-pending';setTimeout(function(){h.classList.remove('bj-i18n-pending')},2500)})();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://bajaj.com.br">
         <link rel="pingback" href="/xmlrpc.php">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="../bajajmorocoo/wp-content/themes/bajaj-morocoo/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="print" onload="this.media='all'" />
 
     <title>Test Ride &#8211; Bajaj Morocco</title>
 <meta name='robots' content='max-image-preview:large' />
@@ -1305,8 +1310,8 @@ div:hover > .bjf-col-title::after {
   <!-- ── SEALS ── -->
     <div class="bjf-seals">
     <div class="bjf-seals-inner">
-              <img class="bjf-seal-verified" src="../bajajmorocoo/wp-content/uploads/2026/04/verified-claim.png" alt="Verified Seal">
-                    <img class="bjf-seals-img" src="../bajajmorocoo/wp-content/uploads/2026/04/footer-bottom.png" alt="Certifications">
+              <img class="bjf-seal-verified" src="../bajajmorocoo/wp-content/uploads/2026/04/verified-claim.png" alt="Verified Seal" loading="lazy" decoding="async">
+                    <img class="bjf-seals-img" src="../bajajmorocoo/wp-content/uploads/2026/04/footer-bottom.png" alt="Certifications" loading="lazy" decoding="async">
                     <span class="bjf-tagline">SLOW DOWN. YOUR LIFE IS WORTH MORE.</span>
           </div>
   </div>
