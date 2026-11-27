@@ -23,11 +23,38 @@
     return { fb_fbc: fbc, fb_fbp: fbp, fb_fbclid: fbclid };
   }
 
+  // UTM / ad attribution. Read-only: captured from the URL, kept for this session
+  // (first touch), and sent with the lead so we know which campaign/ad it came from.
+  // Nothing here touches the pixel, EmailJS or cookies. Missing values become '' and never throw.
+  var UTM_KEYS = ['utm_source', 'utm_campaign', 'utm_content', 'utm_term'];
+  function captureUtm() {
+    try {
+      var q = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) {
+        var v = q.get(k);
+        if (v) { try { if (!sessionStorage.getItem('bj_' + k)) sessionStorage.setItem('bj_' + k, v); } catch (e) {} }
+      });
+    } catch (e) { /* ignore */ }
+  }
+  function utmParams() {
+    var out = {};
+    UTM_KEYS.forEach(function (k) {
+      var v = '';
+      try { v = new URLSearchParams(window.location.search).get(k) || ''; } catch (e) { v = ''; }
+      if (!v) { try { v = sessionStorage.getItem('bj_' + k) || ''; } catch (e) { v = ''; } }
+      out[k] = v;
+    });
+    return out;
+  }
+  try { captureUtm(); } catch (e) { /* ignore */ }
+
   window.bjSaveLead = function (lead) {
     try {
       if (SUPABASE_URL.indexOf('PASTE_') === 0 || !window.fetch) return;
       var ids = { fb_fbc: '', fb_fbp: '', fb_fbclid: '' };
       try { ids = metaIds(); } catch (e) { /* keep empty strings */ }
+      var utm = { utm_source: '', utm_campaign: '', utm_content: '', utm_term: '' };
+      try { utm = utmParams(); } catch (e) { /* keep empty strings */ }
       var row = {
         nom: lead.nom,
         telephone: lead.telephone,
@@ -37,7 +64,11 @@
         source: 'landing',
         fb_fbc: ids.fb_fbc,
         fb_fbp: ids.fb_fbp,
-        fb_fbclid: ids.fb_fbclid
+        fb_fbclid: ids.fb_fbclid,
+        utm_source: utm.utm_source,
+        utm_campaign: utm.utm_campaign,
+        utm_content: utm.utm_content,
+        utm_term: utm.utm_term
       };
       var send = function (body) {
         return fetch(SUPABASE_URL + '/rest/v1/leads', {
@@ -55,9 +86,10 @@
         if (r.ok) return;
         return r.text().then(function (t) {
           // Database without one of the newer columns yet: save the lead anyway, without them.
-          if (/situation_pro|fb_fb/.test(t)) {
+          if (/situation_pro|fb_fb|utm_/.test(t)) {
             if (/situation_pro/.test(t)) delete row.situation_pro;
             if (/fb_fb/.test(t)) { delete row.fb_fbc; delete row.fb_fbp; delete row.fb_fbclid; }
+            if (/utm_/.test(t)) { delete row.utm_source; delete row.utm_campaign; delete row.utm_content; delete row.utm_term; }
             return send(row).then(function (r2) { if (!r2.ok) r2.text().then(function (t2) { console.warn('CRM', r2.status, t2); }); });
           }
           console.warn('CRM', r.status, t);
